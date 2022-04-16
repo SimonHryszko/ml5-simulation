@@ -1,10 +1,13 @@
 <template>
 
-	<div>
+	<div class="border-2 border-dashed p-10 border-gray-700">
 		<!-- color picker -->
-		<label for="color" class="ml-2">Color: </label>
+		<label for="color" class="text-2xl">Color: </label>
 		<input type="color" name="color" value="#e66465" @change="colorPicked" />
-		{{ colorLabel }}
+		<br>
+		<div class="text-center text-xl">
+			This looks like <strong>{{ colorLabel }}</strong> for me!
+		</div>
 	</div>
 
 	
