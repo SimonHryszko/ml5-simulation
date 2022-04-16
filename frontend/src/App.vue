@@ -5,7 +5,16 @@ import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
+	<div v-for="route in $router.options.routes" :key="route.path">
+		<router-link :to="route.path" active-class="text-green-500 underline-primary-color" 
+		class="hover:text-primary-color py-4 px-2 text-gray-500 font-semibold transition duration-300" >
+			{{ route.name }}
+		</router-link >
+
+		  <h1 class="text-3xl font-bold underline text-red-600">
+    Hello world!
+  </h1>
+	</div>
   <HelloWorld msg="Hello Vue 3 + Vite" />
 </template>
 
