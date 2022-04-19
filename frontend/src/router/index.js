@@ -6,6 +6,11 @@ const routes = [
 		path: "/",
 		component: () => import("../views/colorClassification/index.vue") 
 	},
+  { 
+		name: "Object detection",
+		path: "/object-detection",
+		component: () => import("../views/objectDetection/index.vue") 
+	},
 ];
 
 const router = createRouter({
