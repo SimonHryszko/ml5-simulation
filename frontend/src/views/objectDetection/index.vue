@@ -1,16 +1,92 @@
+<script setup>
+	import ml5 from 'ml5';
+	import p5 from 'p5';
+
+
+	var p5obj = function( sketch ) {
+		let detector;
+		let ready = false;
+		let img;
+		let multiplier = {
+			x: null,
+			y: null
+		}
+
+		function drawRects(e, r){
+			if(e != null){
+				alert("Error: " + e);
+			}
+
+			console.log(r)
+			if(r != null){
+				for (let i = 0; i < r.length; i++) {
+					let object = r[i];
+					sketch.stroke(0,255,0);
+					sketch.strokeWeight(4);
+					sketch.noFill();
+					sketch.rect(object.x * multiplier.x, object.y * multiplier.y, object.width * multiplier.x, object.height * multiplier.y);
+					sketch.noStroke();
+					sketch.fill(255);
+					sketch.textSize(24);
+					sketch.text(object.label, object.x * multiplier.x + 10 * multiplier.x, object.y * multiplier.y - 5);
+				}
+			}
+		}
+
+		function imageLoaded(){
+				// WAIT FOR IMAGE TO LOAD
+				if(img && img.width){
+					sketch.image(img, 0, 0, sketch.width, sketch.height);
+					multiplier.x = sketch.width / img.width;
+					multiplier.y = sketch.height / img.height;
+
+					detector.detect(img, drawRects);
+				}
+				else
+					setTimeout(imageLoaded, 100);
+		}
+
+		function imageDetect(url){
+			img = sketch.loadImage(url, imageLoaded());
+		}
+
+		function modelReady(){
+			ready = true;
+			let url = prompt("Enter image URL");
+			imageDetect(url || 'https://i.imgur.com/xC1KKXG.png');
+		}
+
+		sketch.setup = function() {
+			var c = sketch.createCanvas(1200, 800);
+			c.parent("canvas")
+			sketch.background(0);
+
+			// Add text 'Model Loading...'
+			sketch.textSize(32);
+			sketch.fill(255)
+			sketch.textAlign(sketch.CENTER);
+			sketch.text('Model Loading...', sketch.width / 2, sketch.height / 2);
+
+			// Load model
+			detector = ml5.objectDetector('cocossd', modelReady);
+		};
+	};    
+
+	setTimeout(function(){
+		var myp5 =	new p5(p5obj);
+	}, 1000);
+
+</script>
+
 <template>
-
 	<div>
-		<!-- link to https://editor.p5js.org/codingtrain/sketches/ZNQQx2n5o -->
-		<p>
-			<a href="https://editor.p5js.org/codingtrain/sketches/ZNQQx2n5o" class="block">
-				Click here to see the p5js sketch of image
-			</a>
+		<!-- URL to image -->
+		<div class="flex justify-center">
+			<!-- <i class="fa fa-search"></i> -->
+			<!-- <input type="text" class="h-14 w-96 pl-10 pr-20 rounded-lg z-0 focus:shadow focus:outline-none" placeholder="Type url for image!"> -->
 
-			<a href="https://editor.p5js.org/codingtrain/sketches/VIYRpcME3">
-				Click here to see the p5js sketch of video
-			</a>
-		</p>
+			<!-- <button class="w-20 text-white rounded-lg bg-red-500 hover:bg-red-600">Redraw</button> -->
+		</div>
+		<div id="canvas"></div>
 	</div>
-
 </template>
