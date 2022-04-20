@@ -28,7 +28,7 @@
 					sketch.noStroke();
 					sketch.fill(255);
 					sketch.textSize(24);
-					sketch.text(object.label, object.x * multiplier.x + 10 * multiplier.x, object.y * multiplier.y - 5);
+					sketch.text(object.label + ` ${sketch.nf(100 * object.confidence, 2,1)}%`, object.x * multiplier.x + 10 * multiplier.x, object.y * multiplier.y - 5);
 				}
 			}
 		}
