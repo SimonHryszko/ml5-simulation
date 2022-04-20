@@ -11,6 +11,11 @@ const routes = [
 		path: "/object-detection",
 		component: () => import("../views/objectDetection/index.vue") 
 	},
+  { 
+		name: "Draw recognition",
+		path: "/draw-recognition",
+		component: () => import("../views/drawRecognition/index.vue") 
+	},
 ];
 
 const router = createRouter({

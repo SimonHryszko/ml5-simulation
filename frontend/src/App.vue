@@ -2,7 +2,7 @@
 </script>
 
 <template>
-	<main class="flex flex-col h-screen items-center mt-10">
+	<main class="flex flex-col items-center mt-10">
 		<!-- MENU -->
 		<ul class="flex border-b">
 			<li v-for="route in $router.options.routes" :key="route.path" class="-mb-px mr-1">
