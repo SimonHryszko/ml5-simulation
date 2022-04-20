@@ -37,10 +37,12 @@
 				// WAIT FOR IMAGE TO LOAD
 				if(img && img.width){
 					sketch.image(img, 0, 0, sketch.width, sketch.height);
+
 					multiplier.x = sketch.width / img.width;
 					multiplier.y = sketch.height / img.height;
 
 					detector.detect(img, drawRects);
+
 				}
 				else
 					setTimeout(imageLoaded, 100);
@@ -53,6 +55,9 @@
 		function modelReady(){
 			ready = true;
 			let url = prompt("Enter image URL");
+			if(url)
+				alert("If image no loaded probably CORS issue. Try again different image.");
+			
 			imageDetect(url || 'https://i.imgur.com/xC1KKXG.png');
 		}
 
