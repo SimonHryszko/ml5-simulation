@@ -1,0 +1,24 @@
+{
+    "name": "ml5-simulation",
+    "version": "0.1.0",
+    "description": "This is my repo for college finale work",
+    "scripts": {
+        "format": "prettier * --write"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Shirobachi/ml5-simulation.git"
+    },
+    "author": {
+        "name": "Simon Hryszko",
+        "email": "simon@hryszko.dev"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Shirobachi/ml5-simulation/issues"
+    },
+    "homepage": "https://github.com/Shirobachi/ml5-simulation#readme",
+    "devDependencies": {
+        "prettier": "2.7.1"
+    }
+}
