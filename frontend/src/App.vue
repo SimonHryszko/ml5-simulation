@@ -1,6 +1,11 @@
 <script setup>
     import Preview from './components/Preview.vue';
+    import {data} from './store';
+
+    const store = data();
     const isPreview = import.meta.env.VITE_PREVIEW;
+
+    store.load();
 </script>
 
 <template>

@@ -1,6 +1,18 @@
 import { defineStore } from 'pinia';
 import * as modal from 'sweetalert2';
 
+const Toast = modal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+        toast.addEventListener('mouseenter', modal.stopTimer);
+        toast.addEventListener('mouseleave', modal.resumeTimer);
+    },
+});
+
 export const data = defineStore('data', {
     state: () => {
         return {};
@@ -19,15 +31,9 @@ export const data = defineStore('data', {
             // loading data
 
             modal.close();
-            modal.fire({
-                toast: true,
-                title: 'Success',
-                text: 'Data loaded successfully',
+            Toast.fire({
                 icon: 'success',
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 3000,
-                timerProgressBar: true,
+                title: 'App loaded!',
             });
         },
     },
