@@ -11,6 +11,7 @@
         "ml5": "^0.12.1",
         "p5": "^1.4.1",
         "pinia": "^2.0.21",
+        "pinia-plugin-persistedstate": "^2.1.1",
         "vue": "^3.2.25",
         "vue-router": "^4.0.14"
     },

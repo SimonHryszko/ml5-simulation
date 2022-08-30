@@ -6,4 +6,5 @@ export const dataStore = defineStore('data', {
         };
     },
 
+    persist: true,
 });
