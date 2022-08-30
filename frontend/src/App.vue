@@ -1,5 +1,5 @@
 <script setup>
-    import Preview from "./components/Preview.vue";
+    import Preview from './components/Preview.vue';
     const isPreview = import.meta.env.VITE_PREVIEW;
 </script>
 
