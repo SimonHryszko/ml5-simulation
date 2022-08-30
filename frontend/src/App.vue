@@ -1,18 +1,11 @@
 <script setup>
+    import Preview from "./components/Preview.vue";
     const isPreview = import.meta.env.VITE_PREVIEW;
 </script>
 
 <template>
     <main class="flex flex-col items-center mt-10">
-        <div
-            v-if="isPreview"
-            class="corner w-0 h-0 right-0 top-0 absolute border-l-[150px] border-l-transparent border-solid border-t-[150px] border-t-cyan-700">
-            <span
-                class="absolute block -top-28 -left-24 text-center rotate-45 w-16 text-xl font-mono"
-                title="This is pull request preview!">
-                Preview</span
-            >
-        </div>
+        <Preview v-if="isPreview" />
 
         <!-- MENU -->
         <ul class="flex border-b">
