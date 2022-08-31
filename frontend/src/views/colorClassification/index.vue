@@ -20,14 +20,22 @@
             {
                 data: [],
                 backgroundColor: [],
+                borderColor: [],
+                borderWidth: 1,
             },
         ];
         let backgroundColor = [];
 
         result.value.map((item) => {
             labels.push(item.label);
-            datasets[0].data.push((item.confidence * 100).toFixed(2));
-            datasets[0].backgroundColor.push(getColor(item.label));
+            datasets[0].data.push((item.confidence * 100).toFixed(0));
+            datasets[0].backgroundColor.push(getColor({
+                name: item.label,
+                transparency: 0.3,
+            }));
+            datasets[0].borderColor.push(getColor({
+                name: item.label
+            }));
         });
 
         return {

@@ -13,8 +13,8 @@ export const Toast = modal.mixin({
     },
 });
 
-export const getColor = (name, type = 'rgba') => {
-    let color = data.filter((item) => item.color === name);
+export const getColor = (params = {}) => {
+    let color = data.filter((item) => item.color === params.name);
 
     if (color.length > 0) {
         color = color[0];
@@ -22,7 +22,7 @@ export const getColor = (name, type = 'rgba') => {
         color = { r: 0, g: 0, b: 0 };
     }
 
-    if (type == 'rgba') {
-        return `rgba(${color.r}, ${color.g}, ${color.b}, 1)`;
+    if (params.type == 'rgba' || !params.type) {
+        return `rgba(${color.r}, ${color.g}, ${color.b}, ${params.transparency || 1})`;
     }
 };
