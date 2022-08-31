@@ -6,11 +6,10 @@ import Swal from 'sweetalert2';
 
 let network;
 const options = { task: 'classification', debug: false };
-const trainingOptions = { epochs: 128, batchSize: 12 };
 let isModelReady = false;
 
 export const result = ref([]);
-export const load = () => {
+export const load = (trainingOptions) => {
     Swal.fire({
         title: 'Loading model',
         text: 'Please wait...',
@@ -60,7 +59,11 @@ const trained = () => {
     Toast.fire({
         icon: 'success',
         title: 'Model is ready',
+        text: "Please select a color to classify",
     });
+
+    result.value = [];
+
 };
 
 export const classify = (input) => {
