@@ -71,6 +71,7 @@
     };
     const options = {
         responsive: true,
+        aspectRatio: 3 / 1,
         scales: {
             y: {
                 ticks: {
