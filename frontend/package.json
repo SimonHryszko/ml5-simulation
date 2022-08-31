@@ -8,12 +8,14 @@
         "preview": "vite preview"
     },
     "dependencies": {
+        "chart.js": "^3.9.1",
         "ml5": "^0.12.1",
         "p5": "^1.4.1",
         "pinia": "^2.0.21",
         "pinia-plugin-persistedstate": "^2.1.1",
         "sweetalert2": "^11.4.29",
         "vue": "^3.2.25",
+        "vue-chartjs": "^4.1.1",
         "vue-router": "^4.0.14"
     },
     "devDependencies": {
