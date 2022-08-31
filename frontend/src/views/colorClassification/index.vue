@@ -14,6 +14,7 @@
     } from 'chart.js';
 
     ChartJS.register(Title, Tooltip, BarElement, CategoryScale, LinearScale);
+    const trainingOptions = ref({ epochs: 1, batchSize: 12 });
     const data = computed(() => {
         let labels = [];
         let datasets = [
@@ -51,7 +52,14 @@
         };
     });
 
-    load();
+    const loadModel = () => {
+        load({
+            epochs: parseInt(trainingOptions.value.epochs),
+            batchSize: parseInt(trainingOptions.value.batchSize),
+        });
+    };
+    loadModel();
+
     const colorChanged = (e) => {
         const input = {
             r: parseInt(e.target.value.substring(1, 3), 16),
