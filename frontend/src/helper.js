@@ -26,3 +26,12 @@ export const getColor = (params = {}) => {
         return `rgba(${color.r}, ${color.g}, ${color.b}, ${params.transparency || 1})`;
     }
 };
+
+export const CLASS = {
+    CORE: {
+        LAYOUT: {
+            WRAPPER: 'flex flex-col md:flex-row justify-around items-center',
+            BOX: 'bg-teal-700 shadow-teal-700 shadow-lg border-teal-700 border-2 border-dashed rounded-lg w-10/12 p-2 my-1',
+        },
+    },
+};
