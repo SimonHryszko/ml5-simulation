@@ -14,7 +14,7 @@
     } from 'chart.js';
 
     ChartJS.register(Title, Tooltip, BarElement, CategoryScale, LinearScale);
-    const trainingOptions = ref({ epochs: 1, batchSize: 12 });
+    const trainingOptions = ref({ epochs: 64, batchSize: 6 });
     const data = computed(() => {
         let labels = [];
         let datasets = [
