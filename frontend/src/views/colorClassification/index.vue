@@ -61,14 +61,40 @@
 
         classify(input);
     };
+    const options = {
+        scales: {
+            y: {
+                ticks: {
+                    color: '#fff',
+                    callback: function (value, index, ticks) {
+                        return `${value}%`;
+                    },
+                },
+            },
+            x: {
+                ticks: {
+                    color: '#fff',
+                },
+            },
+        },
+        plugins: {
+            tooltip: {
+                callbacks: {
+                    label: function (context) {
+                        return `${context.parsed.y}%`;
+                    },
+                },
+            },
+        },
+    };
 </script>
 <template>
     <div class="my-5">
         <div class="flex space-x-2 items-center justify-center mb-5">
             <p>Choose your color</p>
-            <input type="color" name="color" value="#e66465" @change="colorChanged" />
+            <input type="color" name="color" @change="colorChanged" />
         </div>
-        <Bar v-if="result.length > 0" :chart-data="data" />
+        <Bar v-if="result.length > 0" :chart-data="data" :chart-options="options" />
         <p v-else class="text-2xl font-mono font-semibold italic">Choose color to see chart!</p>
     </div>
 </template>
