@@ -1,14 +1,26 @@
 import ml5 from 'ml5';
 import data from './data.json';
 import { ref } from 'vue';
+import { Toast } from '../../helper';
+import Swal from 'sweetalert2';
 
 let network;
 const options = { task: 'classification', debug: false };
-const trainingOptions = { epochs: 32, batchSize: 12 };
+const trainingOptions = { epochs: 128, batchSize: 12 };
 let isModelReady = false;
 
 export const result = ref([]);
 export const load = () => {
+    Swal.fire({
+        title: 'Loading model',
+        text: 'Please wait...',
+        icon: 'info',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        allowEnterKey: false,
+        showConfirmButton: false,
+    });
+
     // initialize the neural network
     network = ml5.neuralNetwork(options);
 
@@ -43,11 +55,20 @@ export const load = () => {
 
 const trained = () => {
     isModelReady = true;
+
+    Swal.close();
+    Toast.fire({
+        icon: 'success',
+        title: 'Model is ready',
+    });
 };
 
 export const classify = (input) => {
     if (!isModelReady) {
-        console.log('Model is not ready yet!');
+        Toast.fire({
+            icon: 'error',
+            title: 'Model is not ready',
+        });
         return false;
     }
     network.classify(input, classified);
