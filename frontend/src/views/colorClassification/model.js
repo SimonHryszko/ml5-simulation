@@ -76,7 +76,11 @@ export const classify = (input) => {
 
 const classified = (err, r) => {
     if (err) {
-        console.log(err);
+        Toast.fire({
+            icon: 'error',
+            title: 'Error while classifying',
+        });
+        console.error(`Error: ${err}`);
     } else {
         result.value = r;
     }
