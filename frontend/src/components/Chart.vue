@@ -61,7 +61,7 @@
         ];
         let backgroundColor = [];
 
-        props.data.slice(0, 15).map((item) => {
+        props.data.slice(0, 10).map((item) => {
             let val = (item.confidence * 100).toFixed(0);
             val = val < 1 ? 1 : val;
 
