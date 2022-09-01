@@ -19,19 +19,21 @@
     });
     const options = {
         responsive: true,
-        aspectRatio: 3 / 1,
+        aspectRatio: 1,
+        indexAxis: 'y',
         scales: {
             y: {
                 ticks: {
                     color: '#fff',
                     callback: function (value, index, ticks) {
-                        return `${value}%`;
+                        return `${data.value.datasets[0].data[index]}%`;
                     },
                 },
+                position: 'right',
             },
             x: {
                 ticks: {
-                    color: '#fff',
+                    display: false,
                 },
             },
         },
@@ -39,8 +41,8 @@
             tooltip: {
                 callbacks: {
                     label: function (context) {
-                        if (context.parsed.y == 1) return '< 1%';
-                        else return `${context.parsed.y}%`;
+                        if (context.parsed.x == 1) return '< 1%';
+                        else return `${context.parsed.x}%`;
                     },
                 },
             },
@@ -50,6 +52,7 @@
         let labels = [];
         let datasets = [
             {
+                axis: 'y',
                 data: [],
                 backgroundColor: [],
                 borderColor: [],
