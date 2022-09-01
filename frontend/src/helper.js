@@ -3,7 +3,7 @@ import data from './views/colorClassification/data.json';
 
 export const Toast = modal.mixin({
     toast: true,
-    position: 'top-end',
+    position: 'bottom',
     showConfirmButton: false,
     timer: 3000,
     timerProgressBar: true,
