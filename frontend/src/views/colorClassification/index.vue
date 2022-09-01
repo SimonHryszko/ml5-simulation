@@ -4,7 +4,7 @@
     import { ref, computed, watch } from 'vue';
     import Chart from '../../components/Chart.vue';
 
-    const trainingOptions = ref({ epochs: 21, batchSize: 6 });
+    const trainingOptions = ref({ epochs: 32, batchSize: 6 });
     const color = ref('#ffffff');
 
     const loadModel = () => {
