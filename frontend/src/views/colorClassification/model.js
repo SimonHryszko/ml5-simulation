@@ -9,7 +9,7 @@ const options = { task: 'classification', debug: false };
 let isModelReady = false;
 
 export const result = ref([]);
-export const load = (trainingOptions) => {
+export const load = (trainingOptions, color = null) => {
     Swal.fire({
         title: 'Loading model',
         text: 'Please wait...',
@@ -49,21 +49,25 @@ export const load = (trainingOptions) => {
     network.normalizeData();
 
     // train the neural network
-    network.train(trainingOptions, trained);
+    network.train(trainingOptions, () => {
+        trained(color);
+    });
 };
 
-const trained = () => {
+const trained = (color) => {
     isModelReady = true;
 
     Swal.close();
     Toast.fire({
         icon: 'success',
         title: 'Model is ready',
-        text: "Please select a color to classify",
+        text: 'Please select a color to classify',
     });
 
     result.value = [];
 
+    if (color)
+        classify(color);
 };
 
 export const classify = (input) => {
