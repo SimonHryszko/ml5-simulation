@@ -2,55 +2,9 @@
     import { load, classify, result } from './model';
     import { getColor, CLASS } from '../../helper';
     import { ref, computed } from 'vue';
-    import { Bar } from 'vue-chartjs';
-    import {
-        Chart as ChartJS,
-        Title,
-        Tooltip,
-        Legend,
-        BarElement,
-        CategoryScale,
-        LinearScale,
-    } from 'chart.js';
+    import Chart from '../../components/Chart.vue';
 
-    ChartJS.register(Title, Tooltip, BarElement, CategoryScale, LinearScale);
     const trainingOptions = ref({ epochs: 64, batchSize: 6 });
-    const data = computed(() => {
-        let labels = [];
-        let datasets = [
-            {
-                data: [],
-                backgroundColor: [],
-                borderColor: [],
-                borderWidth: 1,
-            },
-        ];
-        let backgroundColor = [];
-
-        result.value.slice(0, 15).map((item) => {
-            let val = (item.confidence * 100).toFixed(0);
-            val = val < 1 ? 1 : val;
-
-            labels.push(item.label);
-            datasets[0].data.push(val);
-            datasets[0].backgroundColor.push(
-                getColor({
-                    name: item.label,
-                    transparency: 0.3,
-                }),
-            );
-            datasets[0].borderColor.push(
-                getColor({
-                    name: item.label,
-                }),
-            );
-        });
-
-        return {
-            labels,
-            datasets,
-        };
-    });
 
     const loadModel = () => {
         load({
@@ -68,35 +22,6 @@
         };
 
         classify(input);
-    };
-    const options = {
-        responsive: true,
-        aspectRatio: 3 / 1,
-        scales: {
-            y: {
-                ticks: {
-                    color: '#fff',
-                    callback: function (value, index, ticks) {
-                        return `${value}%`;
-                    },
-                },
-            },
-            x: {
-                ticks: {
-                    color: '#fff',
-                },
-            },
-        },
-        plugins: {
-            tooltip: {
-                callbacks: {
-                    label: function (context) {
-                        if (context.parsed.y == 1) return '<n1%';
-                        else return `${context.parsed.y}%`;
-                    },
-                },
-            },
-        },
     };
 </script>
 <template>
@@ -149,7 +74,7 @@
                                 <span class="font-semibold underline">{{ result[0].label }}</span>
                             </p>
                         </div>
-                        <Bar :chart-data="data" :chart-options="options" />
+                        <Chart :data="result" />
                     </div>
                     <div v-else class="text-center text-xl font-mono leading-10">
                         <p class="text-2xl font-semibold">No data!</p>
