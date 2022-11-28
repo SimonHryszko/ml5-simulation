@@ -2,9 +2,14 @@ import { createRouter, createWebHistory } from 'vue-router';
 
 const routes = [
     {
-        name: 'Color classification',
+        name: 'Landing page',
         path: '/',
-        component: () => import('../views/colorClassification/index.vue'),
+        component: () => import('../views/LandingView.vue'),
+    },
+    {
+        name: 'Color classificator',
+        path: '/cc',
+        component: () => import('../views/color/ColorView.vue'),
     },
     {
         name: 'Object detection',
