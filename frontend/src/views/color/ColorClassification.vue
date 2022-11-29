@@ -1,6 +1,7 @@
 <script setup>
     import BaseButton from '@/components/BaseButton.vue';
-    import ColorGraph from '@/components/ColorGraph.vue';
+    import ColorGraph from '@/components/color-classification/ColorGraph.vue';
+import ModelParameters from '../../components/color-classification/ModelParameters.vue';
 
     const color = '#546384';
     const results = [
@@ -16,9 +17,7 @@
         :style="{ backgroundColor: color }">
         <div class="flex flex-col gap-8 xl:col-start-1 xl:col-span-3 py-8">
             <!-- Parameters -->
-            <section class="bg-black rounded-md p-4 w-full h-full z-10">
-                <p>Parameters</p>
-            </section>
+            <ModelParameters v-model.trim="r" />
 
             <!-- Results -->
             <section class="bg-black rounded-md p-4 w-full h-full">
@@ -27,7 +26,6 @@
                 <ColorGraph :results="results" />
             </section>
         </div>
-
         <section class="xl:block hidden p-8 xl:col-span-2 rounded-md">
             <div class="bg-black bg-opacity-25 p-2 text-xs">
                 <p>{{ color }}</p>
