@@ -17,8 +17,6 @@ import BaseButton from '@/components/BaseButton.vue';
             type: String,
             required: false,
         },
-
-
     });
 </script>
 
