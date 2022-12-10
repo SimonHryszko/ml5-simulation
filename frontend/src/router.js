@@ -9,7 +9,7 @@ const routes = [
     {
         name: 'Color classification',
         path: '/color-classification',
-        component: () => import('./views/color/ColorClassification.vue'),
+        component: () => import('./views/ColorClassification.vue'),
     },
 ];
 

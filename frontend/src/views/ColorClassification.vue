@@ -1,7 +1,7 @@
 <script setup>
     import BaseButton from '@/components/BaseButton.vue';
     import ColorGraph from '@/components/color-classification/ColorGraph.vue';
-    import ModelParameters from '../../components/color-classification/ModelParameters.vue';
+    import ModelParameters from '../components/color-classification/ModelParameters.vue';
     import { ref } from 'vue';
 
     const model = ref({
