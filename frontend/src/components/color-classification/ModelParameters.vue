@@ -19,10 +19,12 @@
     <section class="flex flex-col gap-4 bg-black rounded-md p-4 w-full h-full z-10">
         <p>Parameters</p>
 
-        <ChangeValueModule titleName="Epochs" v-model="modelValue.epochs"/>
-        <ChangeValueModule titleName="Batch size" v-model="modelValue.batchSize"/>
-
-        <BaseButton @click="selectColor" class="col-start-1 row-start-1 w-full">Reteach model</BaseButton>
+        <ChangeValueModule
+            titleName="Epochs"
+            v-model="modelValue.epochs" />
+        <ChangeValueModule
+            titleName="Batch size"
+            v-model="modelValue.batchSize" />
 
     </section>
 </template>
