@@ -26,5 +26,8 @@
             titleName="Batch size"
             v-model="modelValue.batchSize" />
 
+        <BaseButton @click="selectColor" class="col-start-1 row-start-1 w-full"
+            >Reteach model</BaseButton
+        >
     </section>
 </template>
