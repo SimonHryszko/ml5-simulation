@@ -1,16 +1,22 @@
 <script setup>
     import ChangeValueModule from './ChangeValueModule.vue';
-    import { ref, onMounted } from 'vue';
+    import { ref, onMounted, watch } from 'vue';
     import BaseButton from '@/components/BaseButton.vue';
     import data from '@/Models/color-classification/data.json';
     import ml5 from 'ml5';
+    import { hexToRgb } from '@/helper.js';
 
     const busy = ref(true);
+    let nn;
     const emit = defineEmits(['update:modelValue']);
     const props = defineProps({
         modelValue: {
             required: true,
             type: Object,
+        },
+        color: {
+            required: true,
+            type: String,
         },
     });
     const nnOptions = {
@@ -24,10 +30,18 @@
         console.log('finished training');
     }
 
+    function gotResults(error, results) {
+        if (error) {
+            console.error(error);
+            return;
+        }
+        console.log(results);
+    }
+
     // ---- Methods ----
     const prepareModel = () => {
         busy.value = true;
-        let nn = ml5.neuralNetwork(nnOptions);
+        nn = ml5.neuralNetwork(nnOptions);
 
         data.forEach((item) => {
             nn.addData(
@@ -49,6 +63,26 @@
     const reteachModel = () => {
         prepareModel();
     };
+
+    const predictColor = (hex) => {
+        const rgb = hexToRgb(hex);
+        nn.classify(
+            {
+                r: rgb.r,
+                g: rgb.g, // may just be rgb
+                b: rgb.b,
+            },
+            gotResults,
+        );
+    };
+
+    // ---- Watchers ----
+    watch(
+        () => props.color,
+        (newColor) => {
+            predictColor(newColor);
+        },
+    );
 
     // ---- Other ----
     onMounted(() => {
