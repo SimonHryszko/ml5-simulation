@@ -24,7 +24,7 @@
             @click="$router.push('/color-classification')"
             title="Color Classifier"
             colorClass="bg-primary-blue"
-            description="In data science, a classifier is a type of machine learning algorithm used to assign a class label to a data input.">
+            description="A color classifier is a tool that uses algorithms to identify and classify colors. It can be used in a variety of applications, such as image editing or manufacturing.">
             <svg
                 width="32"
                 height="32"
