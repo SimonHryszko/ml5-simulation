@@ -1,62 +1,64 @@
+import { transformExpression } from '@vue/compiler-core';
 import ml5 from 'ml5';
-import data from './data.json';
 import { ref } from 'vue';
+// https://www.youtube.com/watch?v=XPhBVWyZXXk
+let nn;
 
-let network;
-const options = { task: 'classification', debug: false };
-const trainingOptions = { epochs: 32, batchSize: 12 };
-let isModelReady = false;
+const nnOptions = {
+    task: 'classification',
+    debug: false,
+};
 
-export const result = ref([]);
-export const load = () => {
-    // initialize the neural network
-    network = ml5.neuralNetwork(options);
+const trainingOptions = {
+    epochs: 32,
+    batchSize: 12,
+};
 
-    // add data to the neural network
-    data.map((item) => {
-        let input;
-        if (item.hex) {
-            input = {
-                r: parseInt(item.hex.substring(1, 3), 16) / 255,
-                g: parseInt(item.hex.substring(3, 5), 16) / 255,
-                b: parseInt(item.hex.substring(5, 7), 16) / 255,
-            };
-        } else {
-            input = {
-                r: item.r,
-                g: item.g,
-                b: item.b,
-            };
-        }
+// initialize and train the neural network
 
-        network.addData(input, {
+export function initNN(data) {
+    // 1 initialize the neural network
+    nn = ml5.neuralNetwork(nnOptions);
+
+    // 2 add data to the neural network
+    data.forEach((item) => {
+        const inputs = {
+            r: item.r,
+            g: item.g,
+            b: item.b,
+        };
+
+        const output = {
             color: item.color,
-        });
+        };
+
+        nn.addData(inputs, output);
     });
 
-    // normalize the data
-    network.normalizeData();
+    // 3 normalize the data
+    nn.normalizeData();
 
-    // train the neural network
-    network.train(trainingOptions, trained);
-};
+    // 4 train the neural network
+    nn.train(trainingOptions, finishedTraining);
+}
 
-const trained = () => {
-    isModelReady = true;
-};
+// callback finishedTraining
+function finishedTraining() {
+    console.log('finished training');
+}
 
-export const classify = (input) => {
-    if (!isModelReady) {
-        console.log('Model is not ready yet!');
-        return false;
-    }
-    network.classify(input, classified);
-};
+// make classification
+export function classify(input) {
+    nn.classify(input, gotResult);
+}
 
-const classified = (err, r) => {
-    if (err) {
-        console.log(err);
+export const colorLabel = ref('');
+
+function gotResult(error, results) {
+    if (error) {
+        console.error(error);
     } else {
-        result.value = r;
+        console.log(results);
+        colorLabel.value = results[0].label;
     }
-};
+}
