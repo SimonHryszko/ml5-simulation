@@ -93,7 +93,7 @@
         :style="{ backgroundColor: color }">
         <div class="flex flex-col gap-8 xl:col-start-1 xl:col-span-3 py-8">
             <!-- Parameters -->
-            <ModelParameters :readiness="modelReady" @confirmRetrain="prepareModel" v-model="model" :color="color" v-model:results="results" />
+            <ModelParameters v-model="model" :color="color" v-model:results="results" />
 
             <!-- Results -->
             <section class="bg-black rounded-md p-4 w-full h-full">
