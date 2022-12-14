@@ -2,89 +2,19 @@
     import BaseButton from '@/components/BaseButton.vue';
     import Chart from '@/components/color-classification/Chart.vue';
     import ModelParameters from '../components/color-classification/ModelParameters.vue';
-    import ml5 from 'ml5';
-    import { ref, onMounted, watch } from 'vue';
-    import { hexToRgb } from '@/helper.js';
-    import data from '@/Models/color-classification/data.json';
+    import { ref } from 'vue';
 
     const model = ref({
         epochs: 32,
         batchSize: 12,
     });
-
-    const color = ref('#' + Math.floor(Math.random() * 16777215).toString(16));
+    const color = ref('#' + Math.floor(Math.random()*16777215).toString(16));
+    const results = ref([]);
     const colorPicker = ref('colorPicker');
+    
     const selectColor = () => {
         colorPicker.value.click();
     };
-
-    const modelReady = ref(false);
-    const nnOptions = {
-        task: 'classification',
-        debug: false,
-    };
-    let nn;
-
-    // ---- Callbacks ----
-    function finishedTraining() {
-        modelReady.value = false;
-        console.log('finished training');
-    }
-
-    function gotResults(error, r) {
-        if (error) {
-            console.error(error);
-            return;
-        }
-        results.value = r;
-    }
-
-    // ---- Methods ----
-    const prepareModel = () => {
-        modelReady.value = false;
-        nn = ml5.neuralNetwork(nnOptions);
-
-        data.forEach((item) => {
-            nn.addData(
-                {
-                    r: item.r,
-                    g: item.g,
-                    b: item.b,
-                },
-                {
-                    color: item.color,
-                },
-            );
-        });
-
-        nn.normalizeData();
-        nn.train(model, finishedTraining);
-    };
-
-    const predictColor = (hex) => {
-        const rgb = hexToRgb(hex);
-        nn.classify(
-            {
-                r: rgb.r,
-                g: rgb.g, // may just be rgb
-                b: rgb.b,
-            },
-            gotResults,
-        );
-    };
-
-    // ---- Other ----
-    const results = ref([]);
-
-    onMounted(() => {
-        prepareModel();
-    });
-    watch(
-        () => color.value,
-        (newColor) => {
-            predictColor(newColor);
-        },
-    );
 </script>
 
 <template>
@@ -98,7 +28,7 @@
             <!-- Results -->
             <section class="bg-black rounded-md p-4 w-full h-full">
                 <p>Results</p>
-                <p v-if="results.length == 0">Please select a color to see the results.</p>
+                <p v-if="results.length==0">Please select a color to see the results.</p>
                 <Chart :data="results" />
             </section>
         </div>
@@ -119,6 +49,7 @@
 
         <section
             class="bg-black w-full rounded-md p-4 xl:col-start-11 flex flex-row gap-4 items-center justify-center xl:col-span-2 h-16">
+
             <div class="grid grid-cols-1 grid-rows-1 items-end">
                 <BaseButton @click="selectColor" class="col-start-1 row-start-1 w-full"
                     >Change Color</BaseButton
