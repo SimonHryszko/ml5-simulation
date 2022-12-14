@@ -118,7 +118,7 @@
 
         <section
             class="bg-black w-full rounded-md p-4 xl:col-start-11 flex flex-row gap-4 items-center justify-center xl:col-span-2 h-16">
-            <div class="grid grid-cols-1 grid-rows-1 items-end">
+            <div class="grid grid-cols-1 grid-rows-1 items-end place-items-stretch w-full">
                 <BaseButton
                     :disabled="!modelReady"
                     @click="selectColor"
