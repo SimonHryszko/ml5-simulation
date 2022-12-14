@@ -58,7 +58,7 @@
         });
 
         nn.normalizeData();
-        nn.train(model, finishedTraining);
+        nn.train(model.value, finishedTraining);
     };
 
     const predictColor = (hex) => {
