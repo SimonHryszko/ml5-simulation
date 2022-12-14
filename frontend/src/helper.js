@@ -1,4 +1,5 @@
 import * as modal from 'sweetalert2';
+import data from './views/colorClassification/data.json';
 
 export const Toast = modal.mixin({
     toast: true,
@@ -24,6 +25,15 @@ export const getColor = (params = {}) => {
     if (params.type == 'rgba' || !params.type) {
         return `rgba(${color.r}, ${color.g}, ${color.b}, ${params.transparency || 1})`;
     }
+};
+
+export const CLASS = {
+    CORE: {
+        LAYOUT: {
+            WRAPPER: 'flex flex-col md:flex-row justify-around items-center',
+            BOX: 'bg-teal-700 shadow-teal-700 shadow-lg border-teal-700 border-2 border-dashed rounded-lg w-11/12 p-2 my-1',
+        },
+    },
 };
 
 export const rgbToHex = (r, g, b) => {
