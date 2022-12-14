@@ -62,7 +62,6 @@
         classify(input);
     };
     const options = {
-        responsive: true,
         scales: {
             y: {
                 ticks: {
@@ -82,8 +81,7 @@
             tooltip: {
                 callbacks: {
                     label: function (context) {
-                        if (context.parsed.y == 1) return '<n1%';
-                        else return `${context.parsed.y}%`;
+                        return `${context.parsed.y}%`;
                     },
                 },
             },
