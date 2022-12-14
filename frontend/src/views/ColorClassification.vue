@@ -55,8 +55,14 @@
             class="bg-black w-full rounded-md p-4 xl:col-start-11 flex flex-row gap-4 items-center justify-center xl:col-span-2 h-16">
 
             <div class="grid grid-cols-1 grid-rows-1 items-end">
-                <BaseButton @click="selectColor" class="col-start-1 row-start-1 w-full">Change Color</BaseButton>
-                <input v-model="color" class="z-[-20] col-start-1 row-start-1" type="color" ref="colorPicker">
+                <BaseButton @click="selectColor" class="col-start-1 row-start-1 w-full"
+                    >Change Color</BaseButton
+                >
+                <input
+                    v-model="color"
+                    class="z-[-20] col-start-1 row-start-1"
+                    type="color"
+                    ref="colorPicker" />
             </div>
         </section>
     </section>
