@@ -96,9 +96,8 @@
             <ModelParameters :readiness="modelReady" @confirmRetrain="prepareModel" v-model="model" :color="color" v-model:results="results" />
 
             <!-- Results -->
-            <section class="bg-black rounded-md p-4 w-full h-full">
+            <section :class="{'invisible': (results.length == 0)}" class="bg-black rounded-md p-4 w-full h-full">
                 <p>Results</p>
-                <p v-if="results.length == 0">Please select a color to see the results.</p>
                 <Chart :data="results" />
             </section>
         </div>
