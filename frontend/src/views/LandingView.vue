@@ -1,12 +1,12 @@
 <script setup>
-import LandingItem from '../components/LandingItem.vue';
+    import LandingItem from '../components/LandingItem.vue';
 </script>
 
 <template>
     <section class="w-full min-h-full flex flex-grow xl:flex-row flex-col items-center justify-center gap-8 xl:gap-16">
         <p class="bg-primary-green"> </p>
         <LandingItem
-            @click="$router.push('/color-classification')"
+            @click="$router.push('/color')"
             title="Color Classifier"
             colorClass="bg-primary-blue"
             description="In data science, a classifier is a type of machine learning algorithm used to assign a class label to a data input.">
@@ -65,5 +65,6 @@ import LandingItem from '../components/LandingItem.vue';
             </svg>
         </LandingItem>
 
-</section>
+      
+    </section>
 </template>
