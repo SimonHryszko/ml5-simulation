@@ -18,10 +18,6 @@
             required: true,
             type: String,
         },
-        results: {
-            required: true,
-            type: Array,
-        },
     });
     const nnOptions = {
         task: 'classification',
@@ -39,7 +35,7 @@
             console.error(error);
             return;
         }
-        emit('update:results', results);
+        console.log(results);
     }
 
     // ---- Methods ----
