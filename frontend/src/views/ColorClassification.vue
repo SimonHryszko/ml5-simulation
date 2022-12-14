@@ -80,12 +80,12 @@
     onMounted(() => {
         // prepareModel();
     });
-    watch(
-        () => color.value,
-        (newColor) => {
-            predictColor(newColor);
-        },
-    );
+    // watch(
+    //     () => color.value,
+    //     (newColor) => {
+    //         predictColor(newColor);
+    //     },
+    // );
 </script>
 
 <template>
