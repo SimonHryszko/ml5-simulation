@@ -8,7 +8,7 @@
         epochs: 32,
         batchSize: 12,
     });
-    const color = ref('#' + Math.floor(Math.random()*16777215).toString(16));
+    const color = ref('#546384');
     const results = ref([]);
     const colorPicker = ref('colorPicker');
     
