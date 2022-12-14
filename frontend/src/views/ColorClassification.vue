@@ -39,7 +39,11 @@
 
         <section class="xl:block hidden p-8 xl:col-span-2 rounded-md">
             <div class="bg-black bg-opacity-25 p-2 text-xs">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi eius nostrum, libero eaque nihil alias mollitia accusantium dolor cum. Sunt nihil quia reprehenderit necessitatibus architecto saepe itaque dolorem, iusto et.</p>
+                <p>{{ color }}</p>
+                <p>Lorem Ipsum</p>
+                <p>Lorem Ipsum</p>
+
+                <!-- COLOR PICKER: https://codepen.io/brownsugar/pen/NaGPKy -->
             </div>
         </section>
 

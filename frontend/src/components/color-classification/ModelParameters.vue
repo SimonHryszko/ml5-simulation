@@ -1,8 +1,7 @@
 <script setup>
     import ChangeValueModule from './ChangeValueModule.vue';
     import { ref } from 'vue';
-    import BaseButton from '@/components/BaseButton.vue';
-
+    
     const emit = defineEmits(['update:modelValue']);
 
     const props = defineProps({
@@ -21,8 +20,6 @@
 
         <ChangeValueModule titleName="Epochs" v-model="modelValue.epochs"/>
         <ChangeValueModule titleName="Batch size" v-model="modelValue.batchSize"/>
-
-        <BaseButton @click="selectColor" class="col-start-1 row-start-1 w-full">Reteach model</BaseButton>
 
     </section>
 </template>
