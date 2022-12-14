@@ -27,7 +27,7 @@
 
     // ---- Callbacks ----
     function finishedTraining() {
-        modelReady.value = true;
+        modelReady.value = false;
         console.log('finished training');
     }
 
