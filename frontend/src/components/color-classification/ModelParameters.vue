@@ -2,11 +2,15 @@
     import ChangeValueModule from './ChangeValueModule.vue';
     import BaseButton from '@/components/BaseButton.vue';
 
-    const emit = defineEmits(['update:modelValue']);
+    const emit = defineEmits(['update:modelValue', 'confirmRetrain']);
     const props = defineProps({
         modelValue: {
             required: true,
             type: Object,
+        },
+        readiness: {
+            required: true,
+            type: Boolean,
         },
     });
 </script>
@@ -19,6 +23,8 @@
         <ChangeValueModule titleName="Batch size" v-model="modelValue.batchSize" />
 
         <BaseButton
+            @click="emit('confirmRetrain')"
+            :disabled="!props.readiness"
             class="col-start-1 row-start-1 w-full disabled:cursor-progress">
             Reteach model
         </BaseButton>
