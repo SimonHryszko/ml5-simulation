@@ -26,23 +26,16 @@
         ];
         let backgroundColor = [];
 
-        result.value.slice(0, 15).map((item) => {
-            let val = (item.confidence * 100).toFixed(0);
-            val = val < 1 ? 1 : val;
-
+        result.value.map((item) => {
             labels.push(item.label);
-            datasets[0].data.push(val);
-            datasets[0].backgroundColor.push(
-                getColor({
-                    name: item.label,
-                    transparency: 0.3,
-                }),
-            );
-            datasets[0].borderColor.push(
-                getColor({
-                    name: item.label,
-                }),
-            );
+            datasets[0].data.push((item.confidence * 100).toFixed(0));
+            datasets[0].backgroundColor.push(getColor({
+                name: item.label,
+                transparency: 0.3,
+            }));
+            datasets[0].borderColor.push(getColor({
+                name: item.label
+            }));
         });
 
         return {
