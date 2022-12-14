@@ -39,15 +39,7 @@
 
         <section class="xl:block hidden p-8 xl:col-span-2 rounded-md">
             <div class="bg-black bg-opacity-25 p-2 text-xs">
-                <p>
-                    A color classifier is a tool or system that uses algorithms to identify and
-                    classify colors. It may be a standalone program or part of a larger application,
-                    and it typically uses a combination of machine learning and image processing
-                    techniques to analyze and categorize colors. Color classifiers can be used in a
-                    variety of applications, such as in image editing software to automatically sort
-                    and organize images by color, or in manufacturing to ensure that products are
-                    being made with the correct colors.
-                </p>
+                <p>A color classifier is a tool or system that uses algorithms to identify and classify colors. It may be a standalone program or part of a larger application, and it typically uses a combination of machine learning and image processing techniques to analyze and categorize colors. Color classifiers can be used in a variety of applications, such as in image editing software to automatically sort and organize images by color, or in manufacturing to ensure that products are being made with the correct colors.</p>
             </div>
         </section>
 
