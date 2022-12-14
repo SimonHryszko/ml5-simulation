@@ -78,7 +78,7 @@
     const results = ref([]);
 
     onMounted(() => {
-        prepareModel();
+        // prepareModel();
     });
     watch(
         () => color.value,
