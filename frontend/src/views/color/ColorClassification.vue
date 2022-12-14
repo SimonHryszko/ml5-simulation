@@ -1,14 +1,9 @@
 <script setup>
     import BaseButton from '@/components/BaseButton.vue';
     import ColorGraph from '@/components/color-classification/ColorGraph.vue';
-    import ModelParameters from '../../components/color-classification/ModelParameters.vue';
-    import { ref } from 'vue';
+import ModelParameters from '../../components/color-classification/ModelParameters.vue';
 
-    const model = ref({
-        epochs: 32,
-        batchSize: 12,
-    });
-    const color = ref('#546384');
+    const color = '#546384';
     const results = [
         { name: 'red', value: '#ff0000', percentage: 0.5 },
         { name: 'green', value: '#00ff00', percentage: 0.3 },
@@ -22,7 +17,7 @@
         :style="{ backgroundColor: color }">
         <div class="flex flex-col gap-8 xl:col-start-1 xl:col-span-3 py-8">
             <!-- Parameters -->
-            <ModelParameters v-model="model" />
+            <ModelParameters v-model.trim="r" />
 
             <!-- Results -->
             <section class="bg-black rounded-md p-4 w-full h-full">
@@ -31,19 +26,17 @@
                 <ColorGraph :results="results" />
             </section>
         </div>
-
         <section class="xl:block hidden p-8 xl:col-span-2 rounded-md">
             <div class="bg-black bg-opacity-25 p-2 text-xs">
                 <p>{{ color }}</p>
                 <p>Lorem Ipsum</p>
                 <p>Lorem Ipsum</p>
-
-                <!-- COLOR PICKER: https://codepen.io/brownsugar/pen/NaGPKy -->
             </div>
         </section>
 
         <section
             class="bg-black w-full rounded-md p-4 xl:col-start-11 flex flex-row gap-4 items-center justify-center xl:col-span-2 h-16">
+            <BaseButton class="w-full">Change Color</BaseButton>
 
             <BaseButton class="w-full">Change Color</BaseButton>
         </section>
