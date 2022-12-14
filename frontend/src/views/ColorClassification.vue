@@ -1,6 +1,6 @@
 <script setup>
     import BaseButton from '@/components/BaseButton.vue';
-    import ColorGraph from '@/components/color-classification/ColorGraph.vue';
+    import Chart from '@/components/color-classification/Chart.vue';
     import ModelParameters from '../components/color-classification/ModelParameters.vue';
     import { ref } from 'vue';
 
@@ -9,11 +9,7 @@
         batchSize: 12,
     });
     const color = ref('#546384');
-    const results = [
-        { name: 'red', value: '#ff0000', percentage: 0.5 },
-        { name: 'green', value: '#00ff00', percentage: 0.3 },
-        { name: 'blue', value: '#0000ff', percentage: 0.2 },
-    ];
+    const results = ref([]);
     const colorPicker = ref('colorPicker');
     
     const selectColor = () => {
@@ -32,8 +28,7 @@
             <!-- Results -->
             <section class="bg-black rounded-md p-4 w-full h-full">
                 <p>Results</p>
-
-                <ColorGraph :results="results" />
+                <Chart :data="results" />
             </section>
         </div>
 
