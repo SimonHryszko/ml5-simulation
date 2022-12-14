@@ -1,4 +1,5 @@
 import * as modal from 'sweetalert2';
+import data from '@/Models/color-classification/data.json';
 
 export const Toast = modal.mixin({
     toast: true,
