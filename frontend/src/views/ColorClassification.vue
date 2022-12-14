@@ -6,6 +6,7 @@
     import { ref, onMounted, watch } from 'vue';
     import { hexToRgb } from '@/helper.js';
     import data from '@/Models/color-classification/data.json';
+    import InfoCard from '../components/infoCard.vue';
 
     const model = ref({
         epochs: 32,
@@ -93,28 +94,27 @@
         :style="{ backgroundColor: color }">
         <div class="flex flex-col gap-8 xl:col-start-1 xl:col-span-3 py-8">
             <!-- Parameters -->
-            <ModelParameters :readiness="modelReady" @confirmRetrain="prepareModel" v-model="model" :color="color" v-model:results="results" />
+            <ModelParameters
+                :readiness="modelReady"
+                @confirmRetrain="prepareModel"
+                v-model="model"
+                :color="color"
+                v-model:results="results" />
 
             <!-- Results -->
-            <section :class="{'invisible': (results.length == 0)}" class="bg-black rounded-md p-4 w-full h-full">
+            <section
+                :class="{ invisible: results.length == 0 }"
+                class="bg-black rounded-md p-4 w-full h-full">
                 <p>Results</p>
                 <Chart :data="results" />
             </section>
         </div>
 
-        <section class="xl:block hidden p-8 xl:col-span-2 rounded-md">
-            <div class="bg-black bg-opacity-25 p-2 text-xs">
-                <p>
-                    A color classifier is a tool or system that uses algorithms to identify and
-                    classify colors. It may be a standalone program or part of a larger application,
-                    and it typically uses a combination of machine learning and image processing
-                    techniques to analyze and categorize colors. Color classifiers can be used in a
-                    variety of applications, such as in image editing software to automatically sort
-                    and organize images by color, or in manufacturing to ensure that products are
-                    being made with the correct colors.
-                </p>
-            </div>
-        </section>
+        <div class="flex flex-col xl:col-span-6">
+            <InfoCard titleName="Info" description="A color classifier is a tool or system that uses algorithms to identify and classify colors. It may be a standalone program or part of a larger application, and it typically uses a combination of machine learning and image processing techniques to analyze and categorize colors. Color classifiers can be used in a variety of applications, such as in image editing software to automatically sort and organize images by color, or in manufacturing to ensure that products are being made with the correct colors."/>
+            <InfoCard titleName="Epoch" description="In machine learning, an epoch is a single pass through the entire training dataset. During each epoch, the model will make predictions on the training data, compare its predictions to the actual values, and then update its internal parameters to reduce the error between its predictions and the actual values."/>
+            <InfoCard titleName="Batch size" description="In machine learning, the batch size is the number of samples that the model uses to calculate the error and update the model weights during training. A batch is a subset of the training data, and the batch size is the number of samples in that subset."/>
+        </div>
 
         <section
             class="bg-black w-full rounded-md p-4 xl:col-start-11 flex flex-row gap-4 items-center justify-center xl:col-span-2 h-16">
