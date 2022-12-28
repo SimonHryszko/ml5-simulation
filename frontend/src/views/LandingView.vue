@@ -42,10 +42,10 @@
 
         <LandingItem
             class="anime-item"
-            @click="$router.push('/color')"
-            title="Color Classifier"
+            @click="$router.push('/image-classification')"
+            title="Image Classifier"
             colorClass="bg-primary-green"
-            description="In data science, a classifier is a type of machine learning algorithm used to assign a class label to a data input.">
+            description="An image classifier is a machine learning model that recognizes and classifies objects in images. The ml5 library provides access to pre-trained image classifiers and makes it easy to use them in applications. Simply load the model and pass an image to get labels and probabilities for identified objects. This is a convenient way to add image recognition without building a model from scratch.">
             <svg
                 width="32"
                 height="32"
@@ -63,7 +63,7 @@
 
         <LandingItem
             class="anime-item"
-            @click="$router.push('/color')"
+            @click="$router.push('/404')"
             title="Color Classifier"
             colorClass="bg-primary-yellow"
             description="In data science, a classifier is a type of machine learning algorithm used to assign a class label to a data input.">

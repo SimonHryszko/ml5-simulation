@@ -11,6 +11,11 @@ const routes = [
         path: '/color-classification',
         component: () => import('./views/ColorClassification.vue'),
     },
+    {
+        name: 'Image classification',
+        path: '/image-classification',
+        component: () => import('./views/ImageClassification.vue'),
+    },
 ];
 
 const router = createRouter({
