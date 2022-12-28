@@ -1,11 +1,26 @@
 <script setup>
-import LandingItem from '../components/LandingItem.vue';
+    import LandingItem from '../components/LandingItem.vue';
+    import anime from 'animejs';
+    import { onMounted } from 'vue';
+
+    onMounted(() => {
+        anime({
+            targets: '.anime-item',
+            translateY: [-100, 0],
+            duration: 800,
+            opacity: [0, 1],
+            delay: anime.stagger(500),
+            easing: 'easeInOutQuad',
+        });
+    });
 </script>
 
 <template>
-    <section class="w-full min-h-full flex flex-grow xl:flex-row flex-col items-center justify-center gap-8 xl:gap-16">
-        <p class="bg-primary-green"> </p>
+    <section
+        class="w-full min-h-full flex flex-grow xl:flex-row flex-col items-center justify-center gap-8 xl:gap-16">
+        <p class="bg-primary-green"></p>
         <LandingItem
+            class="anime-item"
             @click="$router.push('/color-classification')"
             title="Color Classifier"
             colorClass="bg-primary-blue"
@@ -26,6 +41,7 @@ import LandingItem from '../components/LandingItem.vue';
         </LandingItem>
 
         <LandingItem
+            class="anime-item"
             @click="$router.push('/color')"
             title="Color Classifier"
             colorClass="bg-primary-green"
@@ -46,6 +62,7 @@ import LandingItem from '../components/LandingItem.vue';
         </LandingItem>
 
         <LandingItem
+            class="anime-item"
             @click="$router.push('/color')"
             title="Color Classifier"
             colorClass="bg-primary-yellow"
@@ -64,6 +81,5 @@ import LandingItem from '../components/LandingItem.vue';
                     stroke-linejoin="round" />
             </svg>
         </LandingItem>
-
-</section>
+    </section>
 </template>
