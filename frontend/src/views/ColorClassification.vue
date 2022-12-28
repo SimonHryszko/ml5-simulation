@@ -2,7 +2,7 @@
     import BaseButton from '@/components/BaseButton.vue';
     import Chart from '@/components/color-classification/Chart.vue';
     import ModelParameters from '../components/color-classification/ModelParameters.vue';
-    // import ml5 from 'ml5';
+    import ml5 from 'ml5';
     import { ref, onMounted, watch } from 'vue';
     import { hexToRgb } from '@/helper.js';
     import data from '@/Models/color-classification/data.json';
