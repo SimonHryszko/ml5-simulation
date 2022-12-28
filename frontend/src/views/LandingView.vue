@@ -9,7 +9,7 @@ import LandingItem from '../components/LandingItem.vue';
             @click="$router.push('/color-classification')"
             title="Color Classifier"
             colorClass="bg-primary-blue"
-            description="A color classifier is a tool that uses algorithms to identify and classify colors. It can be used in a variety of applications, such as image editing or manufacturing.">
+            description="A color classifier is a machine learning model that recognizes and classifies different colors in images. The ml5 library provides access to pre-trained color classifiers and makes it easy to use them in applications. Simply load the model and pass an image to get labels for identified colors. This is a convenient way to add color recognition without building a model from scratch. It can be used for tasks such as image segmentation.">
             <svg
                 width="32"
                 height="32"
