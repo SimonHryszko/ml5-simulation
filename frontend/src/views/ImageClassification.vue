@@ -25,14 +25,20 @@
     <div class="flex flex-col gap-8 xl:col-start-1 xl:col-span-3 py-8">
       <CodeAndSchemaVue :code="results" />
 
-      <div class="flex flex-col gap-4 bg-black rounded-md p-4 w-full h-full z-10">List of links to google image with the results</div>
+      <div class="flex flex-col gap-4 bg-black rounded-md p-4 w-full h-full z-10">
+        List of links to google image with the results
+      </div>
     </div>
 
     <MainImage :img_name="img_name" />
-    <img id="image" class="hidden" :src="`/color-classification/${img_name}`" alt="Could not load image.">
+    <img
+      id="image"
+      class="hidden"
+      :src="`/color-classification/${img_name}`"
+      alt="Could not load image." />
 
     <div
-    @click="classify"
+      @click="classify"
       class="bg-black w-full rounded-md p-4 xl:col-start-11 flex flex-row gap-4 items-center justify-center xl:col-span-2 h-16">
       image switcher
     </div>
