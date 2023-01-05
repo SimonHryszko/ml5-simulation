@@ -17,7 +17,7 @@ module.exports = {
     /**
      * https://prettier.io/docs/en/options.html#tab-width
      */
-    tabWidth: 4,
+    tabWidth: 2,
 
     /**
      * https://prettier.io/docs/en/options.html#arrow-function-parentheses
