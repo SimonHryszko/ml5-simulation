@@ -1,8 +1,9 @@
 <script setup>
-  import { ref } from 'vue';
+  import { ref, watch } from 'vue';
   import MainImage from '../components/image-classification/MainImage.vue';
   import CodeAndSchemaVue from '../components/CodeAndSchema.vue';
   import ml5 from 'ml5';
+  import ImageSwitcher from '../components/image-classification/ImageSwitcher.vue';
 
   const color = ref('#' + Math.floor(Math.random() * 16777215).toString(16));
   const img_name = ref('img1.png');
@@ -17,7 +18,11 @@
       console.log(results);
     });
   };
-  const model = [ { "label": "String", "confidence": "Number" } ]
+  watch(img_name, () => {
+    classify();
+    console.log('watching img_name');
+  });
+  const model = [{ label: 'String', confidence: 'Number' }];
 </script>
 <template>
   <section
@@ -25,23 +30,27 @@
     :style="{ backgroundColor: color }">
     <div class="flex flex-col gap-8 xl:col-start-1 xl:col-span-3 py-8">
       <CodeAndSchemaVue :code="results" :schema="model" />
-      
+
       <div class="flex flex-col gap-4 bg-black rounded-md p-4 w-full h-full z-10">
-        List of links to google image with the results
+        <p v-for="item in results">
+          -
+          <a :href="`https://www.google.com/search?tbm=isch&q=${item.label}`" target="_blank">🔗</a>
+           {{ item.label }} ~{{ (item.confidence * 100).toFixed(2) }}%
+        </p>
       </div>
     </div>
 
-    <MainImage :img_name="img_name" />
-    <img
-      id="image"
-      class="hidden"
-      :src="`/color-classification/${img_name}`"
-      alt="Could not load image." />
-
-    <div
-      @click="classify"
-      class="bg-black w-full rounded-md p-4 xl:col-start-11 flex flex-row gap-4 items-center justify-center xl:col-span-2 h-16">
-      image switcher
+    <!-- <MainImage :img_name="img_name" /> -->
+    <div class="gap-5 flex flex-col xl:col-span-7">
+      <div class="flex items-center flex-col gap-4 bg-black rounded-md p-4 w-full h-full z-10">
+        <img
+          id="image"
+          width="800"
+          :src="`/image-classification/${img_name}`"
+          alt="Could not load image." />
+      </div>
     </div>
+
+    <ImageSwitcher v-model="img_name" />
   </section>
 </template>
