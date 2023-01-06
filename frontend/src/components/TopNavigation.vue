@@ -28,16 +28,15 @@
         });
     });
 
-const colors = ['#FF0000', '#FF7F00', '#FFFF00', '#00FF00', '#0000FF', '#4B0082', '#8B00FF'
-];
+  const colors = ['#FF0000', '#FF7F00', '#FFFF00', '#00FF00', '#0000FF', '#4B0082', '#8B00FF' ];
 
-    // get route path
-    const route = useRoute();
+  // get route path
+  const route = useRoute();
 
-    // get route path
-    const path = computed(() => route.path);
-
-    const isLandingPage = computed(() => path.value == '/');
+  // get route path
+const path = computed(() => route.path);
+  
+  const isLandingPage = computed(() => path.value == '/');
 </script>
 
 <template>
@@ -52,11 +51,20 @@ const colors = ['#FF0000', '#FF7F00', '#FFFF00', '#00FF00', '#0000FF', '#4B0082'
             </p>
         </div>
 
+        You are at {{ route.path }}
+
         <div v-if="!isLandingPage" class="flex flex-row gap-4">
             <span
+                :class="route.path=='/color-classification' ? 'underline underline-offset-8 decoration-primary-blue' : ''"
                 @click="$router.push('/color-classification')"
                 class="hover:underline hover:decoration-primary-blue hover:underline-offset-8">
                 Color classification
+            </span>
+            <span
+                :class="route.path=='/image-classification' ? 'underline underline-offset-8 decoration-primary-blue' : ''"
+                @click="$router.push('/image-classification')"
+                class="hover:underline hover:decoration-primary-blue hover:underline-offset-8">
+                Image classification
             </span>
         </div>
     </nav>
