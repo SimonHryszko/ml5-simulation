@@ -10,7 +10,7 @@
   const results = ref([]);
 
   // Initialize the Image Classifier method with MobileNet
-  const classifier = ml5.imageClassifier('MobileNet', () => {});
+  const classifier = ml5.imageClassifier('MobileNet', () => {classify()});
 
   const classify = () => {
     classifier.classify(document.getElementById('image'), (err, r) => {
@@ -32,6 +32,7 @@
       <CodeAndSchemaVue :code="results" :schema="model" />
 
       <div class="flex flex-col gap-4 bg-black rounded-md p-4 w-full h-full z-10">
+        <p v-if="results.length == 0">Looks like model is still loading, be patient.</p>
         <p v-for="item in results">
           -
           <a :href="`https://www.google.com/search?tbm=isch&q=${item.label}`" target="_blank">🔗</a>
