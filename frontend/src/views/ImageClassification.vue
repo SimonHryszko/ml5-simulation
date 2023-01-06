@@ -17,14 +17,15 @@
       console.log(results);
     });
   };
+  const model = [ { "label": "String", "confidence": "Number" } ]
 </script>
 <template>
   <section
     class="grid grid-cols-1 gap-5 xl:grid-cols-12 p-4 h-full min-w-full flex-grow content-start pt-96 xl:pt-4"
     :style="{ backgroundColor: color }">
     <div class="flex flex-col gap-8 xl:col-start-1 xl:col-span-3 py-8">
-      <CodeAndSchemaVue :code="results" />
-
+      <CodeAndSchemaVue :code="results" :schema="model" />
+      
       <div class="flex flex-col gap-4 bg-black rounded-md p-4 w-full h-full z-10">
         List of links to google image with the results
       </div>
