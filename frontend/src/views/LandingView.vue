@@ -63,10 +63,10 @@
 
         <LandingItem
             class="anime-item"
-            @click="$router.push('/404')"
-            title="Color Classifier"
+            @click="$router.push('/text-classification')"
+            title="Text Classifier"
             colorClass="bg-primary-yellow"
-            description="In data science, a classifier is a type of machine learning algorithm used to assign a class label to a data input.">
+            description="The text classifier ml5 Sentiment is a machine learning tool that uses natural language processing (NLP) to analyze and classify the sentiment of a given text. It can determine if the overall sentiment of the text is positive, negative, or neutral. This is useful for tasks such as social media analysis, customer feedback analysis, and opinion mining. The ml5 library, which the text classifier is a part of, is a friendly, easy-to-use interface for machine learning tasks in the browser. With just a few lines of code, you can easily incorporate this powerful tool into your projects.">
             <svg
                 width="32"
                 height="32"
