@@ -51,8 +51,6 @@ const path = computed(() => route.path);
             </p>
         </div>
 
-        You are at {{ route.path }}
-
         <div v-if="!isLandingPage" class="flex flex-row gap-4">
             <span
                 :class="route.path=='/color-classification' ? 'underline underline-offset-8 decoration-primary-blue' : ''"
