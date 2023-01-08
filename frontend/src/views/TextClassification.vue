@@ -34,8 +34,9 @@
     </div>
     <div v-else class="p-6 flex flex-col gap-4">
       <p class="text-center pt-4">
-        You watch movie, TV show or something. I didn't like it or even better you love it! I don't
-        know you write it below as a review and I will tell you if that was positive or negative ;)
+        You recently watched a movie/TV show, and you either really enjoyed it or was disappointed
+        by it. I don't know if you liked it but let's make a deal. You write below review and I'll
+        tell you if it's positive or negative!
       </p>
       <textarea
         id="message"
