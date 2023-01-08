@@ -28,7 +28,7 @@
   });
 </script>
 <template>
-  <section>
+  <section class="w-2/3 self-center">
     <div v-if="!readiness">
       <p class="text-center pt-4 mb-3">Sorry model is not ready yet... Just wait a second...</p>
     </div>
