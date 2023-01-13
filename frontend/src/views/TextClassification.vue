@@ -1,15 +1,12 @@
 <script setup>
-  import { ref, computed } from 'vue';
+  import { ref, computed, watch, onMounted } from 'vue';
   import ml5 from 'ml5';
 
   const text = ref('');
   const readiness = ref(false);
   const result = ref({});
+  let sentiment = null;
 
-  // init model
-  const sentiment = ml5.sentiment('movieReviews', () => {
-    readiness.value = true;
-  });
   const resultObject = computed(() => {
     if (!result.value.score) return {};
 
@@ -25,6 +22,12 @@
       hslHue: parseFloat(result.value.score * 10 * 13),
       label,
     };
+  });
+  onMounted(() => {
+    // init model
+    sentiment = ml5.sentiment('movieReviews', () => {
+      readiness.value = true;
+    });
   });
 </script>
 <template>
