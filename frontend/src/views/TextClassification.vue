@@ -49,19 +49,69 @@
   const reviews = [
     {
       quote: `Everything they had been building up for is lost! The went against everything the books and shows hinted, teased even outrightly proclaimed till now. Everything from season 1 has become pointless. Jon and Daenerys have become pointless. The prophecy, the dragons, the warging of the stark children, the three eyed raven, quaithe, warlocks, Jon'ss resurrection is all pointless. It's just another drama with people fighting for a kingdom. The most pathetic end to a beloved series. It could have been great.`,
-      stars: 1,
     },
     {
       quote: `The first few seasons where amazing as they were based on the books, as the show started to advance and as the fewer material and content got the worse the show became, starting season 6 you can notice a clear decline in the quality of episodes, you can clearly notice the increase of time fillers up until season 8 which was the most horrible of them all. Don't invest too much time on the series of you haven't started but just skip through the episode as some of the scenes are worth watching.`,
-      stars: 3,
     },
     {
       quote: `First 6 seasons were fantastic but after that everything went south and especially season 8 was the worst! It was rushed and i could not make any emotional connection with any of the characters. Simply put, it was bland! The ending was so bad that it feels like you wasted your precious 10 years for nothing!`,
-      stars: 3,
     },
     {
       quote: `We have really enjoyed GoT since its first episode, have just watched the episode 3 from season 8, to be honest I was very disappointed, to say the episode cost over 11 million to make, the whole episode was so dark you couldn't make out what was happening. Absolutely shocking`,
-      stars: 6,
+    },
+    {
+      quote: `Pacing so rushed that almost each episode could be a season of its own, all the logic previously shown, all the character developments, foreshadowing of plots, tension buildups, absolutely everything that they built for 8 years has been thrown out of the window for the sake of some visually impressive but rushed mindless spectacle, culminating in the worst and most illogical ending I ever saw in any TV show, including infamous endings of Lost and Dexter.`,
+    },
+    {
+      quote: `Season 8 episode 3, Long Night killed evil Dead King in dumb and rush manner, and the rest of show with him for me.`,
+    },
+    {
+      quote: `Characters are propped up while others are torn down for what I can only speculate are the writers injecting hollywood politics into the show.`,
+    },
+    {
+      quote: `Nothing against strong female characters, some of my favorite movies have female leads, but when it is so obvious that there's an agenda at play, like it is in GoT towards the end, it's just off-putting.`,
+    },
+    {
+      quote: `What was once an entertaining show with solid writing and thrilling character arcs was reduced to nothing more than a Hallmark-type fantasy flick where logic or continuity had no room.`,
+    },
+    {
+      quote: ``,
+    },
+    {
+      quote: ``,
+    },
+    {
+      quote: ``,
+    },
+    {
+      quote: ``,
+    },
+    {
+      quote: ``,
+    },
+    {
+      quote: ``,
+    },
+    {
+      quote: ``,
+    },
+    {
+      quote: ``,
+    },
+    {
+      quote: ``,
+    },
+    {
+      quote: ``,
+    },
+    {
+      quote: ``,
+    },
+    {
+      quote: ``,
+    },
+    {
+      quote: ``,
     },
   ];
   const copyToClipboard = (text) => {
@@ -79,6 +129,8 @@
       readiness.value = true;
       for (let review of reviews) {
         review.label = classify(review.quote).score;
+        review.bgCol = hslToHex(classify(review.quote).score * 10 * 13, 100, 50)
+        review.val = (review.label * 100).toFixed(0);
       }
     });
   });
@@ -114,11 +166,12 @@
           </span>
         </div>
         <!-- flex -->
+        <h1 class="text-2xl font-medium text-center text-gray-200">Examples Reviews</h1>
+
         <OneReview
-          v-for="review in _.sortBy(reviews, 'val')"
-          val="(classifyParam(review.quote) * 100).toFixed(0)"
-          bgCol="hslToHex(classifyParam(review.quote) * 10 * 13, 100, 50)"
-          stars="review.stars"
+          v-for="review in _.sortBy(reviews.filter(item => item.quote.length > 0), 'val')"
+          :val="review.val"
+          :bgCol="review.bgCol"
           :label="review.label"
           :quote="review.quote"
           :key="review.quote" />
