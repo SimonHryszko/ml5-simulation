@@ -107,7 +107,7 @@
         placeholder="Write your thoughts here..."></textarea>
 
       <div class="flex-col gap-4 flex justify-center items-center">
-        <div class="flex" v-show="result?.score">
+        <div class="flex" v-show="result?.score && text.length > 0">
           <span
             :style="{
               color: `hsl(${resultObject.hslHue}, 100%, 10%)`,
