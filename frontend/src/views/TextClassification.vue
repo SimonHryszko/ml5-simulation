@@ -48,18 +48,15 @@
   });
   const reviews = [
     {
-      quote:
-        "Everything they had been building up for is lost! The went against everything the books and shows hinted, teased even outrightly proclaimed till now. Everything from season 1 has become pointless. Jon and Daenerys have become pointless. The prophecy, the dragons, the warging of the stark children, the three eyed raven, quaithe, warlocks, Jon'ss resurrection is all pointless. It's just another drama with people fighting for a kingdom. The most pathetic end to a beloved series. It could have been great.",
+      quote: `Everything they had been building up for is lost! The went against everything the books and shows hinted, teased even outrightly proclaimed till now. Everything from season 1 has become pointless. Jon and Daenerys have become pointless. The prophecy, the dragons, the warging of the stark children, the three eyed raven, quaithe, warlocks, Jon'ss resurrection is all pointless. It's just another drama with people fighting for a kingdom. The most pathetic end to a beloved series. It could have been great.`,
       stars: 1,
     },
     {
-      quote:
-        "The first few seasons where amazing as they were based on the books, as the show started to advance and as the fewer material and content got the worse the show became, starting season 6 you can notice a clear decline in the quality of episodes, you can clearly notice the increase of time fillers up until season 8 which was the most horrible of them all. Don't invest too much time on the series of you haven't started but just skip through the episode as some of the scenes are worth watching.",
+      quote: `The first few seasons where amazing as they were based on the books, as the show started to advance and as the fewer material and content got the worse the show became, starting season 6 you can notice a clear decline in the quality of episodes, you can clearly notice the increase of time fillers up until season 8 which was the most horrible of them all. Don't invest too much time on the series of you haven't started but just skip through the episode as some of the scenes are worth watching.`,
       stars: 3,
     },
     {
-      quote:
-        'First 6 seasons were fantastic but after that everything went south and especially season 8 was the worst! It was rushed and i could not make any emotional connection with any of the characters. Simply put, it was bland! The ending was so bad that it feels like you wasted your precious 10 years for nothing!',
+      quote: `First 6 seasons were fantastic but after that everything went south and especially season 8 was the worst! It was rushed and i could not make any emotional connection with any of the characters. Simply put, it was bland! The ending was so bad that it feels like you wasted your precious 10 years for nothing!`,
       stars: 3,
     },
     {
