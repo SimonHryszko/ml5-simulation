@@ -1,6 +1,7 @@
 <script setup>
   import { ref, computed, watch, onMounted } from 'vue';
   import ml5 from 'ml5';
+  import OneReview from '../components/text-classification/OneReview.vue';
 
   const text = ref('');
   const readiness = ref(false);
@@ -110,15 +111,28 @@
         Check review!
       </button>
 
-      <span
+          <span
         v-show="result?.score"
-        :style="{
-          color: `hsl(${resultObject.hslHue}, 100%, 10%)`,
-          'background-color': `hsl(${resultObject.hslHue}, 100%, 50%)`,
-        }"
-        class="text-xs text-center font-semibold inline-block py-1 px-2 rounded uppercase last:mr-0 mr-1">
+            :style="{
+              color: `hsl(${resultObject.hslHue}, 100%, 10%)`,
+              'background-color': `hsl(${resultObject.hslHue}, 100%, 50%)`,
+            }"
+            class="text-xs text-center font-semibold inline-block py-1 px-2 rounded uppercase last:mr-0 mr-1">
         {{ resultObject.label }}
-      </span>
+          </span>
+        </div>
+        <!-- flex -->
+        <OneReview
+          v-for="review in _.sortBy(reviews, 'val')"
+          val="(classifyParam(review.quote) * 100).toFixed(0)"
+          bgCol="hslToHex(classifyParam(review.quote) * 10 * 13, 100, 50)"
+          stars="review.stars"
+          :label="review.label"
+          :quote="review.quote"
+          :key="review.quote" />
+      </div>
+      <!-- flex-col -->
     </div>
+    <!-- on results if-->
   </section>
 </template>
