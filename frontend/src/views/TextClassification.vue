@@ -80,11 +80,10 @@
     // init model
     sentiment = ml5.sentiment('movieReviews', () => {
       readiness.value = true;
+      for (let review of reviews) {
+        review.label = classify(review.quote).score;
+      }
     });
-
-    for (let review of reviews) {
-      review.label = 'super positive';
-    }
   });
 </script>
 <template>
