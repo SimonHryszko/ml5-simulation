@@ -27,8 +27,7 @@
   });
 
   const classify = (t) => {
-    const ans = sentiment.predict(t);
-    result.value = ans;
+    return sentiment.predict(t);
   };
 
   function hslToHex(h, s, l) {
@@ -45,7 +44,7 @@
   }
 
   watch(text, () => {
-    classify(text.value);
+    result.value = classify(text.value);
   });
   const reviews = [
     {
