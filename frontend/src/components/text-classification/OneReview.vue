@@ -18,14 +18,6 @@
       default:
         'The only way to do great work is to love what you do. Btw. I am a fucking quote, where someone forgot put content in me.',
     },
-    stars: {
-      type: Number,
-      required: false,
-      default: 5,
-      min: 0,
-      max: 10,
-      step: 1,
-    },
     label: {
       type: Number,
       required: false,
@@ -34,7 +26,7 @@
   });
 </script>
 <template>
-  <section class="flex gap-4">
+  <section class="flex w-full gap-4 items-center">
     <div
       :style="{
         'background-color': `${props.bgCol}`,
@@ -44,17 +36,6 @@
       <p class="text-xs">{{ props.val }} pkt</p>
     </div>
 
-    <div class="flex items-center">
       <p class="pl-4 border-l-4 border-gray-500 italic">"{{ props.quote }}"</p>
-      <div class="pl-16 flex flex-col text-xs text-gray-500 ml-2">
-        <div class="flex flex-col items-center">
-          <div class="text-2xl flex text-gray-500 ml-2">
-            <span v-for="i in props.stars">&#9733;</span>
-            <span v-for="i in 10 - props.stars">&#9734;</span>
-          </div>
-          <p class="align-self-end">{{ props.label }}</p>
-        </div>
-      </div>
-    </div>
   </section>
 </template>
