@@ -2,6 +2,7 @@
   import { ref, computed, watch, onMounted } from 'vue';
   import ml5 from 'ml5';
   import OneReview from '../components/text-classification/OneReview.vue';
+  import _ from 'lodash';
 
   const text = ref('');
   const readiness = ref(false);
@@ -111,14 +112,16 @@
         Check review!
       </button>
 
+      <div class="flex-col gap-4 flex justify-center items-center">
+        <div class="flex" v-show="result?.score">
           <span
-        v-show="result?.score"
             :style="{
               color: `hsl(${resultObject.hslHue}, 100%, 10%)`,
               'background-color': `hsl(${resultObject.hslHue}, 100%, 50%)`,
             }"
+            @click="copyToClipboard(resultObject.original?.score)"
             class="text-xs text-center font-semibold inline-block py-1 px-2 rounded uppercase last:mr-0 mr-1">
-        {{ resultObject.label }}
+            {{ resultObject.label }} | {{ (resultObject.original?.score * 100).toFixed(2) }} pkt
           </span>
         </div>
         <!-- flex -->
