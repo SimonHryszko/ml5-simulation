@@ -23,7 +23,13 @@
       required: false,
       default: '0.6535733342170715',
     },
+    modelValue: {
+      type: String,
+      required: false,
+    }
   });
+
+  const emit = defineEmits(['update:modelValue']);
 </script>
 <template>
   <section class="flex w-full gap-4 items-center">
@@ -36,6 +42,6 @@
       <p class="text-xs">{{ props.val }} pkt</p>
     </div>
 
-      <p class="pl-4 border-l-4 border-gray-500 italic">"{{ props.quote }}"</p>
+      <p @click="emit('update:modelValue', props.quote)" class="pl-4 border-l-4 border-gray-500 italic">"{{ props.quote }}"</p>
   </section>
 </template>

@@ -174,6 +174,7 @@
           :bgCol="review.bgCol"
           :label="review.label"
           :quote="review.quote"
+          v-model="text"
           :key="review.quote" />
       </div>
       <!-- flex-col -->
