@@ -6,21 +6,21 @@
   import ImageSwitcher from '../components/image-classification/ImageSwitcher.vue';
 
   const color = ref('#' + Math.floor(Math.random() * 16777215).toString(16));
-  const img_name = ref('img1.png');
+  const img_name = ref('/image-classification/img1.png');
   const results = ref([]);
 
   // Initialize the Image Classifier method with MobileNet
-  const classifier = ml5.imageClassifier('MobileNet', () => {classify()});
+  const classifier = ml5.imageClassifier('MobileNet', () => {
+    classify();
+  });
 
   const classify = () => {
     classifier.classify(document.getElementById('image'), (err, r) => {
       results.value = r;
-      console.log(results);
     });
   };
   watch(img_name, () => {
     classify();
-    console.log('watching img_name');
   });
   const model = [{ label: 'String', confidence: 'Number' }];
 </script>
@@ -47,7 +47,7 @@
         <img
           id="image"
           width="800"
-          :src="`/image-classification/${img_name}`"
+          :src="`${img_name}`"
           alt="Could not load image." />
       </div>
     </div>
