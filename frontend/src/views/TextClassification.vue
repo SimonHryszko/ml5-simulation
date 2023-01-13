@@ -42,7 +42,9 @@
     return `#${f(0)}${f(8)}${f(4)}`;
   }
 
+  watch(text, () => {
     classify(text.value);
+  });
   const reviews = [
     {
       quote:
