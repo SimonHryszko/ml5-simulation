@@ -23,6 +23,13 @@
       label,
     };
   });
+
+  const classify = (t) => {
+    const ans = sentiment.predict(t);
+    result.value = ans;
+  };
+
+    classify(text.value);
   onMounted(() => {
     // init model
     sentiment = ml5.sentiment('movieReviews', () => {
@@ -49,7 +56,7 @@
         placeholder="Write your thoughts here..."></textarea>
 
       <button
-        @click="result = sentiment.predict(text)"
+        @click="classify(text)"
         class="w-10/12 bg-transparent self-center hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
         Check review!
       </button>
