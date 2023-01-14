@@ -19,6 +19,7 @@
     },
     "homepage": "https://github.com/Shirobachi/ml5-simulation#readme",
     "devDependencies": {
-        "prettier": "2.7.1"
+        "prettier": "2.7.1",
+        "vite": "^4.0.4"
     }
 }
