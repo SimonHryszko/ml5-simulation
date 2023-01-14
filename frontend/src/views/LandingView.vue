@@ -13,6 +13,8 @@
             easing: 'easeInOutQuad',
         });
     });
+
+const num = 4;
 </script>
 
 <template>

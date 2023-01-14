@@ -11,4 +11,15 @@ export default defineConfig({
         },
     },
     plugins: [vue()],
+  test: {
+    environment: 'happy-dom',
+    clearMocks: true,
+    restoreMocks: true,
+    mockReset: true,
+    watch: false,
+    isolate: true,
+    transformMode: {
+      web: [/\.([cm]?[jt]sx?|json|vue)$/],
+    },
+  },
 });
