@@ -4,7 +4,7 @@
     "version": "0.0.0",
     "scripts": {
         "dev": "vite",
-        "build": "vite build",
+        "build": "vitest -w false && vite build",
         "preview": "vite preview",
         "test": "vitest",
         "update": "npm-check-updates -u"
