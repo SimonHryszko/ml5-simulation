@@ -16,7 +16,7 @@ export default defineConfig({
     clearMocks: true,
     restoreMocks: true,
     mockReset: true,
-    watch: false,
+    watch: true,
     isolate: true,
     transformMode: {
       web: [/\.([cm]?[jt]sx?|json|vue)$/],
