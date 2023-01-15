@@ -1,11 +1,16 @@
-import { test } from 'vitest';
+import { test, expect, it } from 'vitest';
 import { mount } from '@vue/test-utils';
-import LandingView from '../src/views/LandingView.vue';
+import ImageSwitcher from '../src/components/image-classification/ImageSwitcher.vue';
 
-test('image switcher', () => {
-  const wrapper = mount(LandingView);
-  // const image = wrapper.find('img');
-  // expect(image.attributes('src')).toBe('/images/1.jpg');
-  // wrapper.find('button').trigger('click');
-  // expect(image.attributes('src')).toBe('/images/2.jpg');
+const wrapper = mount(ImageSwitcher);
+
+it('The images array should contain only string with image extension', () => {
+  test('image switcher', () => {
+  const images = wrapper.vm.images;
+
+  // check if images are all ending with .jpg or .png or .jpeg
+  for (const image of images) {
+    expect(image).toMatch(/(jpg|png|jpeg|svg)$/);
+  }
+  })
 });
