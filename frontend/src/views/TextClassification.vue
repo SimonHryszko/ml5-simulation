@@ -2,6 +2,8 @@
   import { ref, computed, watch, onMounted } from 'vue';
   import ml5 from 'ml5';
   import OneReview from '../components/text-classification/OneReview.vue';
+  import { hslToHex } from '@/helper.js';
+
   import _ from 'lodash';
 
   const text = ref('');
@@ -29,19 +31,6 @@
   const classify = (t) => {
     return sentiment.predict(t);
   };
-
-  function hslToHex(h, s, l) {
-    l /= 100;
-    const a = (s * Math.min(l, 1 - l)) / 100;
-    const f = (n) => {
-      const k = (n + h / 30) % 12;
-      const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
-      return Math.round(255 * color)
-        .toString(16)
-        .padStart(2, '0'); // convert to Hex and prefix "0" if needed
-    };
-    return `#${f(0)}${f(8)}${f(4)}`;
-  }
 
   watch(text, () => {
     result.value = classify(text.value);
@@ -129,7 +118,7 @@
       readiness.value = true;
       for (let review of reviews) {
         review.label = classify(review.quote).score;
-        review.bgCol = hslToHex(classify(review.quote).score * 10 * 13, 100, 50)
+        review.bgCol = hslToHex(classify(review.quote).score * 10 * 13, 100, 50);
         review.val = (review.label * 100).toFixed(0);
       }
     });
@@ -169,7 +158,10 @@
         <h1 class="text-2xl font-medium text-center text-gray-200">Examples Reviews</h1>
 
         <OneReview
-          v-for="review in _.sortBy(reviews.filter(item => item.quote.length > 0), 'val')"
+          v-for="review in _.sortBy(
+            reviews.filter((item) => item.quote.length > 0),
+            'val',
+          )"
           :val="review.val"
           :bgCol="review.bgCol"
           :label="review.label"
