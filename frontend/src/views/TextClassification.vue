@@ -63,45 +63,6 @@
     {
       quote: `What was once an entertaining show with solid writing and thrilling character arcs was reduced to nothing more than a Hallmark-type fantasy flick where logic or continuity had no room.`,
     },
-    {
-      quote: ``,
-    },
-    {
-      quote: ``,
-    },
-    {
-      quote: ``,
-    },
-    {
-      quote: ``,
-    },
-    {
-      quote: ``,
-    },
-    {
-      quote: ``,
-    },
-    {
-      quote: ``,
-    },
-    {
-      quote: ``,
-    },
-    {
-      quote: ``,
-    },
-    {
-      quote: ``,
-    },
-    {
-      quote: ``,
-    },
-    {
-      quote: ``,
-    },
-    {
-      quote: ``,
-    },
   ];
   const copyToClipboard = (text) => {
     const el = document.createElement('textarea');
