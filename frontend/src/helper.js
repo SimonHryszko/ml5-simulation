@@ -1,18 +1,3 @@
-import * as modal from 'sweetalert2';
-import data from '@/Models/color-classification/data.json';
-
-export const Toast = modal.mixin({
-    toast: true,
-    position: 'bottom',
-    showConfirmButton: false,
-    timer: 3000,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-        toast.addEventListener('mouseenter', modal.stopTimer);
-        toast.addEventListener('mouseleave', modal.resumeTimer);
-    },
-});
-
 export const getColor = (params = {}) => {
     let color = data.filter((item) => item.color === params.name);
 
