@@ -4,7 +4,7 @@
   import ModelParameters from '../components/color-classification/ModelParameters.vue';
   import ml5 from 'ml5';
   import { ref, onMounted, watch } from 'vue';
-  import { hexToRgb } from '@/helper.js';
+  import { hexToRgb, randomHexColor } from '@/helper.js';
   import data from '@/Models/color-classification/data.json';
   import InfoCard from '../components/infoCard.vue';
 
@@ -13,7 +13,7 @@
     batchSize: 12,
   });
 
-  const color = ref('#' + Math.floor(Math.random() * 16777215).toString(16));
+  const color = ref(randomHexColor());
   const colorPicker = ref('colorPicker');
   const selectColor = () => {
     colorPicker.value.click();
