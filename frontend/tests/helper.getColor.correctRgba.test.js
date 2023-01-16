@@ -24,15 +24,4 @@ describe('getColor', () => {
   it('should return correct rgba', () => {
     for (const datum of data) expect(getColor(datum.in)).toBe(datum.out);
   });
-
-  it('should return string', () => {
-    for (const datum of data) expect(typeof getColor(datum.in)).toBe('string');
-  });
-
-  if (
-    ('should throw error',
-    () => {
-      expect(() => getColor({ name: 'red', type: 'rgb' })).toThrow('Invalid type');
-    })
-  );
 });

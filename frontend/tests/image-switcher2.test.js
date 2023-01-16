@@ -1,6 +1,6 @@
 import { test, expect, it } from 'vitest';
 import { mount } from '@vue/test-utils';
-import TextClassification from '../src/components/image-classification/TextClassification.vue';
+import TextClassification from '../src/views/TextClassification.vue';
 
 const wrapper = mount(TextClassification);
 

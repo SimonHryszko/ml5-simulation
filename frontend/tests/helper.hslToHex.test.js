@@ -33,9 +33,6 @@ describe('hslToHex', () => {
     it('should return correct format', () => {
       expect(hslToHex(0, 100, 50)).toMatch(/^#[0-9a-f]{6}$/);
     });
-
-
-
   });
 });
 
