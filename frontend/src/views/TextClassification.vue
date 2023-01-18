@@ -170,6 +170,6 @@
       <!-- flex-col -->
     </div>
     <!-- on results if-->
-    <BaseButton @click="guideModal(messages, 0)" class="bottom-5 absolute left-5">Guide</BaseButton>
+    <BaseButton @click="guideModal(messages, 0)" class="bottom-5 fixed left-5">Guide</BaseButton>
   </section>
 </template>
