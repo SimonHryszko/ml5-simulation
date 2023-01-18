@@ -1,5 +1,6 @@
 <script setup>
   import GuideButton from '@/components/GuideButton.vue';
+import BaseButton from '@/components/BaseButton.vue';
   import Chart from '@/components/color-classification/Chart.vue';
   import ModelParameters from '../components/color-classification/ModelParameters.vue';
   import ml5 from 'ml5';

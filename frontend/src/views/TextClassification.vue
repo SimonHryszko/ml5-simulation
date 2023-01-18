@@ -3,7 +3,7 @@
   import ml5 from 'ml5';
   import OneReview from '../components/text-classification/OneReview.vue';
   import { hslToHex, guideModal } from '@/helper.js';
-  import BaseButton from '@/components/BaseButton.vue';
+import GuideButton from '@/components/GuideButton.vue';
   import _ from 'lodash';
 
   const text = ref('');

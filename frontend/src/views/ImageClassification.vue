@@ -2,7 +2,7 @@
   import { ref, watch } from 'vue';
   import CodeAndSchemaVue from '../components/CodeAndSchema.vue';
   import ml5 from 'ml5';
-  import BaseButton from '@/components/BaseButton.vue';
+import GuideButton from '@/components/GuideButton.vue';
   import ImageSwitcher from '../components/image-classification/ImageSwitcher.vue';
 import { randomHexColor, guideModal } from '@/helper.js';
 
