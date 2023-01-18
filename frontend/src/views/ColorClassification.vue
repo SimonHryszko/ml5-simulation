@@ -7,6 +7,11 @@
   import { hexToRgb, randomHexColor } from '@/helper.js';
   import data from '@/Models/color-classification/data.json';
   import InfoCard from '../components/infoCard.vue';
+  import * as modal from 'sweetalert2';
+  
+  const Toast = modal.mixin({
+    showConfirmButton: true,
+  });
 
   const model = ref({
     epochs: 72,
@@ -77,6 +82,50 @@
   // ---- Other ----
   const results = ref([]);
 
+  const messages = [
+    {
+      title: "Color classificator",
+      text: "This model will show how artificial intelligence can be used. Colour classification is only from many examples like for example classification of animals, plants, etc."  
+    },
+    {
+      title: "Teaching",
+      text: "The model is trained on a set of data. The data is a set of colors (RBG) and their names. The model is trained on this data and learns to classify colors."  
+    },
+    {
+      title: "Parameters",
+      text: "The parameters are the number of epochs and the batch size. The number of epochs is the number of times the model will be trained on the data. The batch size is the number of samples that the model uses to calculate the error and update the model weights during training."
+    },
+    {
+      title: "Results",
+      text: "The results are the probability of the color being classified. The higher the probability, the more likely the color is classified."
+    },
+    {
+      title: "Try it",
+      text: "Try it yourself. Select a color and the model will classify it. You can also train the model with different parameters. Change the number of epochs and/or the batch size, retrain the model and try it again."
+    },
+  ];
+  const messageId = ref(0);
+  const howItWork = () => {
+    const isItLast = messageId.value == messages.length - 1;
+    Toast.fire({
+      title: messages[messageId.value].title,
+      text: messages[messageId.value].text,
+      didOpen: () => {
+        if (isItLast) {
+          messageId.value = 0;
+        } else {
+          messageId.value++;
+        }
+      },
+      willClose: () => {
+        if (!isItLast) {
+          howItWork();
+        }
+      },
+      confirmButtonText: isItLast ? 'Close' : 'Next',
+    })
+  }
+
   onMounted(() => {
     prepareModel();
   });
@@ -137,6 +186,7 @@
           type="color"
           ref="colorPicker" />
       </div>
+      <BaseButton @click="howItWork" class="bottom-5 absolute left-5">Guide</BaseButton>
     </section>
   </section>
 </template>
