@@ -1,18 +1,7 @@
 <script setup>
   import { ref } from 'vue';
   const images = [
-    'alex-guillaume-IWnuBhG_y34-unsplash.jpg',
-    'erik-karits-r6PynlurQ2M-unsplash.jpg',
-    'everyday-basics-jNGFbBSDUWY-unsplash.jpg',
-    'img1.png',
-    'jason-leung-ZkXQpZnzxOo-unsplash.jpg',
-    'keagan-henman-iFBIdX54BOk-unsplash.jpg',
-    'mailchimp-lAx4E6Gl06s-unsplash.jpg',
-    'nicolas-hippert-J4eTN9GqhzI-unsplash.jpg',
-    'ricardo-frantz-GvyyGV2uWns-unsplash.jpg',
-    'stefan-widua-vdds_nsH-FE-unsplash.jpg',
-    'verstappen-photography-mVGbQL11JvU-unsplash.jpg',
-    'zhang-liven-Z67vUFm-VIE-unsplash.jpg',
+    "1200px-Black_and_Yellow_Argiope_-_Argiope_aurantia_-_Merritt_Island_National_Wildlife_Refuge,_Florida.jpg", "2445.jpg", "262px-Argiope_aurantia_-_ventral_view.jpg", "Araneus_cavaticus_02.jpg", "download.jpeg", "original.png", "pexels-photo-1103879.jpeg", "pexels-photo-155347.jpeg", "shutterstock_64005883.jpg", "spider-web-with-dew.jpg", "Wolf_spider_-__Allocosa_obscuroides.width-1200.3915b07.jpg", "Wolf_Spider_rpp.jpg"
   ];
   const props = defineProps({
     modelValue: {
