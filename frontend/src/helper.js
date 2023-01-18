@@ -54,21 +54,20 @@ export const guideModal = (messages, messageId) => {
   });
 
   const isItLast = messageId == messages.length - 1;
-  Toast.fire({
-    title: messages[messageId].title,
-    text: messages[messageId].text,
-    didOpen: () => {
+
+    messages[messageId].didOpen = () => {
       if (isItLast) {
         messageId = 0;
       } else {
         messageId++;
       }
-    },
-    willClose: () => {
+    };
+    messages[messageId].willClose = () => {
       if (!isItLast) {
         guideModal(messages, messageId);
       }
-    },
-    confirmButtonText: isItLast ? 'Close' : 'Next',
-  })
+    };
+    messages[messageId].confirmButtonText = isItLast ? 'Close' : 'Next';
+
+  Toast.fire(messages[messageId]);
 }
