@@ -9,8 +9,8 @@
   import InfoCard from '../components/infoCard.vue';
 
   const model = ref({
-    epochs: 32,
-    batchSize: 12,
+    epochs: 72,
+    batchSize: 5,
   });
 
   const color = ref('#' + Math.floor(Math.random() * 16777215).toString(16));
