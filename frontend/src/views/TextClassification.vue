@@ -2,8 +2,8 @@
   import { ref, computed, watch, onMounted } from 'vue';
   import ml5 from 'ml5';
   import OneReview from '../components/text-classification/OneReview.vue';
-  import { hslToHex } from '@/helper.js';
-
+  import { hslToHex, guideModal } from '@/helper.js';
+  import BaseButton from '@/components/BaseButton.vue';
   import _ from 'lodash';
 
   const text = ref('');
@@ -84,6 +84,43 @@
       }
     });
   });
+  const messages = [
+    {
+      title: 'Text Classification',
+      text: `Text classification is a machine learning technique that assigns a category to a piece of text. It is a supervised learning technique, which means that you need to provide a training dataset that contains the text and the category it belongs to. The model will then learn from this dataset and will be able to classify new text.`,
+    },
+    {
+      title: 'Model',
+      text: `Here we have the model called 'Sentiment' which is trained on a dataset of movie reviews. The model will be able to classify a review as positive or negative.`,
+    },
+    {
+      title: 'Training',
+      text: `The model was trained on a dataset of movie reviews. The dataset contains 50,000 reviews, each labeled as positive or negative. The dataset is split into 25,000 reviews for training and 25,000 reviews for testing. The training reviews are further split into 15,000 reviews for training and 10,000 reviews for validation.`,
+    },
+    {
+      title: 'Results',
+      text: `The model was able to achieve an accuracy of 88.5% on the validation set. This means that the model was able to correctly classify 88.5% of the reviews in the validation set.`,
+    },
+    {
+      title: 'Try it out',
+      text: `You can try out the model by writing a review, you will see in real time the model's prediction.`,
+    },
+    {
+      title: 'Examples',
+      text: `Below you can see some examples reviews from IMDB of 'Game of Thrones'`
+    },
+    {
+      title: 'Enjoy!',
+      text: 'Enjoy the power of AI!',
+      color: '#716add',
+      backdrop: `
+        rgba(0,0,123,0.4)
+        url("/images/nyan-cat.gif")
+        left top
+        no-repeat
+      `
+    }
+  ];
 </script>
 <template>
   <section class="w-2/3 self-center">
@@ -133,5 +170,6 @@
       <!-- flex-col -->
     </div>
     <!-- on results if-->
+    <BaseButton @click="guideModal(messages, 0)" class="bottom-5 absolute left-5">Guide</BaseButton>
   </section>
 </template>
