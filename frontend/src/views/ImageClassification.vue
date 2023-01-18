@@ -1,11 +1,11 @@
 <script setup>
   import { ref, watch } from 'vue';
-  import MainImage from '../components/image-classification/MainImage.vue';
   import CodeAndSchemaVue from '../components/CodeAndSchema.vue';
   import ml5 from 'ml5';
   import ImageSwitcher from '../components/image-classification/ImageSwitcher.vue';
+  import { randomHexColor } from '@/helper.js';
 
-  const color = ref('#' + Math.floor(Math.random() * 16777215).toString(16));
+  const color = ref(randomHexColor());
   const img_name = ref('/image-classification/img1.png');
   const results = ref([]);
 
