@@ -4,15 +4,10 @@
   import ModelParameters from '../components/color-classification/ModelParameters.vue';
   import ml5 from 'ml5';
   import { ref, onMounted, watch } from 'vue';
-  import { hexToRgb, randomHexColor } from '@/helper.js';
+import { hexToRgb, randomHexColor, guideModal } from '@/helper.js';
   import data from '@/Models/color-classification/data.json';
   import InfoCard from '../components/infoCard.vue';
-  import * as modal from 'sweetalert2';
   
-  const Toast = modal.mixin({
-    showConfirmButton: true,
-  });
-
   const model = ref({
     epochs: 72,
     batchSize: 5,
@@ -104,27 +99,6 @@
       text: "Try it yourself. Select a color with button 'change color' and the model will classify it. You can also train the model with different parameters. Change the number of epochs and/or the batch size, retrain the model and try it again."
     },
   ];
-  const messageId = ref(0);
-  const howItWork = () => {
-    const isItLast = messageId.value == messages.length - 1;
-    Toast.fire({
-      title: messages[messageId.value].title,
-      text: messages[messageId.value].text,
-      didOpen: () => {
-        if (isItLast) {
-          messageId.value = 0;
-        } else {
-          messageId.value++;
-        }
-      },
-      willClose: () => {
-        if (!isItLast) {
-          howItWork();
-        }
-      },
-      confirmButtonText: isItLast ? 'Close' : 'Next',
-    })
-  }
 
   onMounted(() => {
     prepareModel();
@@ -186,7 +160,7 @@
           type="color"
           ref="colorPicker" />
       </div>
-      <BaseButton @click="howItWork" class="bottom-5 absolute left-5">Guide</BaseButton>
+      <BaseButton @click="guideModal(messages, 0)" class="bottom-5 absolute left-5">Guide</BaseButton>
     </section>
   </section>
 </template>

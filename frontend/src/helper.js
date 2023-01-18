@@ -1,4 +1,5 @@
 import data from '@/Models/color-classification/data.json';
+import * as modal from 'sweetalert2';
 
 export const getColor = (params = {}) => {
   let color = data.filter((item) => item.color.toLowerCase() == params.name.toLowerCase());
@@ -46,3 +47,28 @@ export const hslToHex = (h, s, l) => {
   };
   return `#${f(0)}${f(8)}${f(4)}`;
 };
+
+export const guideModal = (messages, messageId) => {
+  const Toast = modal.mixin({
+    showConfirmButton: true,
+  });
+
+  const isItLast = messageId == messages.length - 1;
+  Toast.fire({
+    title: messages[messageId].title,
+    text: messages[messageId].text,
+    didOpen: () => {
+      if (isItLast) {
+        messageId = 0;
+      } else {
+        messageId++;
+      }
+    },
+    willClose: () => {
+      if (!isItLast) {
+        guideModal(messages, messageId);
+      }
+    },
+    confirmButtonText: isItLast ? 'Close' : 'Next',
+  })
+}
