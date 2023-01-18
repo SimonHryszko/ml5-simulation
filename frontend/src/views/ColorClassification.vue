@@ -101,7 +101,7 @@
     },
     {
       title: "Try it",
-      text: "Try it yourself. Select a color and the model will classify it. You can also train the model with different parameters. Change the number of epochs and/or the batch size, retrain the model and try it again."
+      text: "Try it yourself. Select a color with button 'change color' and the model will classify it. You can also train the model with different parameters. Change the number of epochs and/or the batch size, retrain the model and try it again."
     },
   ];
   const messageId = ref(0);
