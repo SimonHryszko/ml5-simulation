@@ -1,5 +1,5 @@
 <script setup>
-  import BaseButton from '@/components/BaseButton.vue';
+  import GuideButton from '@/components/GuideButton.vue';
   import Chart from '@/components/color-classification/Chart.vue';
   import ModelParameters from '../components/color-classification/ModelParameters.vue';
   import ml5 from 'ml5';
@@ -171,7 +171,7 @@ import { hexToRgb, randomHexColor, guideModal } from '@/helper.js';
           type="color"
           ref="colorPicker" />
       </div>
-      <BaseButton @click="guideModal(messages, 0)" class="bottom-5 absolute left-5">Guide</BaseButton>
+      <GuideButton @click="guideModal(messages, 0)"/>
     </section>
   </section>
 </template>

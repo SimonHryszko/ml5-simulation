@@ -96,6 +96,6 @@ import { randomHexColor, guideModal } from '@/helper.js';
     </div>
 
     <ImageSwitcher v-model="img_name" />
-    <BaseButton @click="guideModal(messages, 0)" class="bottom-5 absolute left-5">Guide</BaseButton>
+    <GuideButton @click="guideModal(messages, 0)" />
   </section>
 </template>
