@@ -98,6 +98,17 @@ import { hexToRgb, randomHexColor, guideModal } from '@/helper.js';
       title: "Try it",
       text: "Try it yourself. Select a color with button 'change color' and the model will classify it. You can also train the model with different parameters. Change the number of epochs and/or the batch size, retrain the model and try it again."
     },
+    {
+      title: 'Enjoy!',
+      text: 'Enjoy the power of AI!',
+      color: '#716add',
+      backdrop: `
+        rgba(0,0,123,0.4)
+        url("/images/nyan-cat.gif")
+        left top
+        no-repeat
+      `
+    }
   ];
 
   onMounted(() => {
