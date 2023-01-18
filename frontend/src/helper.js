@@ -1,3 +1,5 @@
+import data from '@/Models/color-classification/data.json';
+
 export const getColor = (params = {}) => {
     let color = data.filter((item) => item.color === params.name);
 
