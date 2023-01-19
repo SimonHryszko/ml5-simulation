@@ -20,7 +20,12 @@ const routes = [
     name: 'Text classification',
     path: '/text-classification',
     component: () => import('./views/TextClassification.vue'),
-  }
+  },
+  {
+    name: 'Digit classification',
+    path: '/digit-classification',
+    component: () => import('./views/DigitClassification.vue'),
+  },
 ];
 
 const router = createRouter({
