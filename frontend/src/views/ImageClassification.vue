@@ -7,7 +7,7 @@ import GuideButton from '@/components/GuideButton.vue';
 import { randomHexColor, guideModal } from '@/helper.js';
 
   const color = ref(randomHexColor());
-  const img_name = ref('/image-classification/img1.png');
+const img_name = ref('/image-classification/2445.jpg');
   const results = ref([]);
 
   // Initialize the Image Classifier method with MobileNet
