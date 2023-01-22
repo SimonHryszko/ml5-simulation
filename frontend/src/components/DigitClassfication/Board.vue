@@ -10,7 +10,8 @@
   });
   const emit = defineEmits(['update:modelValue']);
   const click = (i, j, val) => {
-    props.modelValue[i - 1][j - 1] = !val ? 1 : 0;
+    if (event.ctrlKey) val = 0;
+    props.modelValue[i - 1][j - 1] = val ?? 1;
     emit('update:modelValue', props.modelValue);
   };
   const isMouseLeftKeyPressed = ref(false);
@@ -44,8 +45,7 @@
         @click="click(i, j)"
         @mouseover="isMouseLeftKeyPressed && click(i, j)"
         @mousedown="click(i, j)"
-        v-for="j in props.modelValue[i - 1].length">
-      </div>
+        v-for="j in props.modelValue[i - 1].length"></div>
     </div>
     <BaseButton class="mt-5" @click="reset">Reset board</BaseButton>
   </section>
