@@ -24,6 +24,14 @@
       isMouseLeftKeyPressed.value = false;
     });
   });
+  const reset = () => {
+    for (let i = 0; i < props.modelValue.length; i++) {
+      for (let j = 0; j < props.modelValue[i].length; j++) {
+        props.modelValue[i][j] = 0;
+      }
+    }
+    emit('update:modelValue', props.modelValue);
+  };
 </script>
 
 <template>
@@ -41,6 +49,6 @@
         <!-- {{ i - 1 }}{{ j - 1 }} -->
       </div>
     </div>
-    <BaseButton class="mt-5">Reset board</BaseButton>
+    <BaseButton class="mt-5" @click="reset">Reset board</BaseButton>
   </section>
 </template>
