@@ -4,13 +4,12 @@
   import BaseButton from '@/components/BaseButton.vue';
   import JsonViewer from 'vue-json-viewer';
   import 'vue-json-viewer/style.css';
-  import { data as storeData } from '@/store.js';
+  import { data as store } from '@/store.js';
   import * as modal from 'sweetalert2';
 
   const Toast = modal.mixin({
     showConfirmButton: true,
   });
-  const store = ref(storeData());
   const data = ref([]);
   const reset = (x, y) => {
     return Array.from({ length: x }, () => Array.from({ length: y }, () => 0));
@@ -57,7 +56,7 @@
       cancelButtonText: 'No, keep it',
     }).then((result) => {
       if (result.isConfirmed) {
-        storeData().data = [];
+        store().data = [];
         Toast.fire('Deleted!', 'Your data has been deleted.', 'success');
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         Toast.fire('Cancelled', 'Your data is safe :)', 'error');
@@ -75,12 +74,12 @@
     </div>
     <div class="col-start-1 col-span-2 text-center">
       There are already
-      <span class="font-semibold underline underline-offset-4">{{ store.data.length }}</span>
+      <span class="font-semibold underline underline-offset-4">{{ store().data.length }}</span>
       training data.
     </div>
 
     <div class="col-start-3 row-start-1">
-      <json-viewer :value="store.data" copyable="true" boxed theme="jv-dark"></json-viewer>
+      <json-viewer :value="store().data" copyable="true" boxed theme="jv-dark"></json-viewer>
       <div class="flex justify-center">
         <BaseButton class="mt-5" @click="clear">Clear data!</BaseButton>
       </div>
