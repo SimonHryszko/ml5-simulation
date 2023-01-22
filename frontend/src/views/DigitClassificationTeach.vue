@@ -82,7 +82,7 @@
     <div class="col-start-3 row-start-1">
       <json-viewer :value="store.data" copyable="true" boxed theme="jv-dark"></json-viewer>
       <div class="flex justify-center">
-        <BaseButton class="mt-5" @click="clear">Clear data! DANGER!</BaseButton>
+        <BaseButton class="mt-5" @click="clear">Clear data!</BaseButton>
       </div>
     </div>
   </section>
