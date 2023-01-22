@@ -26,6 +26,11 @@ const routes = [
     path: '/digit-classification',
     component: () => import('./views/DigitClassification.vue'),
   },
+  {
+    name: 'Digit classification [teach]',
+    path: '/digit-classification/teach',
+    component: () => import('./views/DigitClassificationTeach.vue'),
+  },
 ];
 
 const router = createRouter({

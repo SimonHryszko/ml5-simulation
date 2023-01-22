@@ -1,11 +1,18 @@
 import { defineStore } from 'pinia';
 
 export const data = defineStore('data', {
-    state: () => {
-        return {};
+  state: () => {
+    return {
+      data: [],
+    };
+  },
+  actions: {
+    add(data) {
+      this.data.push(data);
     },
-    actions: {
-        
+    clear() {
+      this.data = [];
     },
-    persist: true,
+  },
+  persist: true,
 });
