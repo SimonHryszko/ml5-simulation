@@ -39,8 +39,8 @@
       timer: 3000,
       timerProgressBar: true,
       didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer);
-        toast.addEventListener('mouseleave', Swal.resumeTimer);
+        toast.addEventListener('mouseenter', toast.stopTimer);
+        toast.addEventListener('mouseleave', toast.resumeTimer);
       },
       icon: 'success',
       title: 'Data added as ' + i + '!',
