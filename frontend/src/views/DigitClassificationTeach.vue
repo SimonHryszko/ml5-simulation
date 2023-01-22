@@ -27,8 +27,8 @@
   });
 
   const add = (i) => {
-    storeData().data.push({
-      in: data.value,
+    store().data.push({
+      in: JSON.parse(JSON.stringify(data.value)),
       out: i,
     });
     Toast.fire({
