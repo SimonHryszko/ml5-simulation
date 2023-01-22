@@ -30,7 +30,7 @@
   const add = (i) => {
     storeData().data.push({
       in: data.value,
-      out: [i],
+      out: i,
     });
     Toast.fire({
       toast: true,
