@@ -10,7 +10,6 @@
   });
   const emit = defineEmits(['update:modelValue']);
   const click = (i, j, val) => {
-    console.log('🚀 ~ file: Board.vue:11 ~ click ~ i, j, val', i, j, val);
     props.modelValue[i - 1][j - 1] = !val ? 1 : 0;
     emit('update:modelValue', props.modelValue);
   };
@@ -46,7 +45,6 @@
         @mouseover="isMouseLeftKeyPressed && click(i, j)"
         @mousedown="click(i, j)"
         v-for="j in props.modelValue[i - 1].length">
-        <!-- {{ i - 1 }}{{ j - 1 }} -->
       </div>
     </div>
     <BaseButton class="mt-5" @click="reset">Reset board</BaseButton>
