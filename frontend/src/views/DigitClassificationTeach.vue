@@ -15,6 +15,13 @@
   const reset = (x, y) => {
     return Array.from({ length: x }, () => Array.from({ length: y }, () => 0));
   };
+  const clearData = () => {
+    for (let i = 0; i < data.value.length; i++) {
+      for (let j = 0; j < data.value[i].length; j++) {
+        data.value[i][j] = 0;
+      }
+    }
+  };
 
   onMounted(() => {
     data.value = reset(7, 5);
@@ -25,6 +32,20 @@
       in: data.value,
       out: [i],
     });
+    Toast.fire({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer);
+        toast.addEventListener('mouseleave', Swal.resumeTimer);
+      },
+      icon: 'success',
+      title: 'Data added as ' + i + '!',
+    });
+    clearData();
   };
   const clear = () => {
     Toast.fire({
