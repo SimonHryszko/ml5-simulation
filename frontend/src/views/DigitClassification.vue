@@ -44,19 +44,24 @@
     modelInit();
   });
 
-  watch(() => [...data.value.flat()], () => {
-    console.log("🚀 ~ file: DigitClassification.vue:48 ~ model.classify ~ data.value.flat()", data.value.flat())
-    if (ready.value) {
-      model.classify(data.value.flat(), (err, res) => {
-        if (err) {
-          console.error(err);
-          return;
-        }
-        result.value = res;
-      });
-    }
-  });
-  </script>
+  const classify = (val) => {
+    if (!ready.value) return;
+    model.classify(val, (err, res) => {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      result.value = res;
+    });
+  };
+
+  watch(
+    () => [...data.value.flat()],
+    () => {
+      classify(data.value.flat());
+    },
+  );
+</script>
 
 <template>
   <section class="grid grid-cols-3 m-10 gap-5">
