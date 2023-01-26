@@ -2,6 +2,8 @@
   import { ref, onMounted, watch } from 'vue';
   import Board from '@/components/DigitClassfication/Board.vue';
   import ml5 from 'ml5';
+  import _ from 'lodash';
+  import { digitToBinaryCode, binaryCodeToDigit } from '@/helper.js';
   import modelData from '@/Models/digit-classification/modelData.json';
 
   const data = ref([]);
@@ -21,10 +23,13 @@
 
     // 2. Add the data
     modelData.forEach((item) => {
-      model.addData(item.in.flat(), {
-        label: item.out.toString(),
-      });
-      console.log("added")
+      model.addData(item.in.flat(), digitToBinaryCode(item.out.toString()));
+      console.log(
+        'added',
+        item.out.toString(),
+        digitToBinaryCode(item.out),
+        binaryCodeToDigit(digitToBinaryCode(item.out)),
+      );
     });
 
     // 3. Normalize the data
@@ -46,7 +51,7 @@
 
   const classify = (val) => {
     if (!ready.value) return;
-    model.classify(val, (err, res) => {
+    model.predict(val, (err, res) => {
       if (err) {
         console.error(err);
         return;
@@ -68,6 +73,10 @@
     <Board class="col-start-2" v-model="data" />
 
     data {{ data }}
-    <div v-for="r in result">{{ r.label }} --> {{ r.confidence }}</div>
+    <ol class="col-start-1" v-for="r in _.orderBy(result, 'value', 'desc')" :key="r.label">
+      {{
+        r.label
+      }} - {{ r.value }}
+    </ol>
   </section>
 </template>
