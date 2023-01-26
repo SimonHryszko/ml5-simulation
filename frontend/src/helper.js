@@ -46,3 +46,21 @@ export const hslToHex = (h, s, l) => {
   };
   return `#${f(0)}${f(8)}${f(4)}`;
 };
+
+export const digitToBinaryCode = (digit, bits) => {
+  bits = bits || 10;
+  
+  let arr = [];
+
+  for (let i = 0; i < bits; i++) {
+    arr.push(i == digit ? 1 : 0);
+  }
+
+  return arr;
+}
+
+export const binaryCodeToDigit = (arr) => {
+  let index = arr.findIndex((item) => item == 1);
+
+  return index == -1 ? 0 : index;
+}
