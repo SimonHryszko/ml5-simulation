@@ -3,7 +3,7 @@
   import Board from '@/components/DigitClassfication/Board.vue';
   import ml5 from 'ml5';
   import _ from 'lodash';
-  import { digitToBinaryMatrice, binaryMatriceToDigit } from '@/helper.js';
+  import { digitToBinaryMatrice, binaryMatriceToDigit, Toast } from '@/helper.js';
   import modelData from '@/Models/digit-classification/modelData.json';
 
   const data = ref([]);
@@ -38,6 +38,11 @@
     // 4. Train the model
     model.train(modelParams, () => {
       ready.value = true;
+
+      Toast.fire({
+        title: 'Model is ready!',
+        icon: 'success',
+      });
     });
   };
   const reset = (x, y) => {
