@@ -3,7 +3,7 @@
   import Board from '@/components/DigitClassfication/Board.vue';
   import ml5 from 'ml5';
   import _ from 'lodash';
-  import { digitToBinaryCode, binaryCodeToDigit } from '@/helper.js';
+  import { digitToBinaryMatrice, binaryMatriceToDigit } from '@/helper.js';
   import modelData from '@/Models/digit-classification/modelData.json';
 
   const data = ref([]);
@@ -23,12 +23,12 @@
 
     // 2. Add the data
     modelData.forEach((item) => {
-      model.addData(item.in.flat(), digitToBinaryCode(item.out.toString()));
+      model.addData(item.in.flat(), digitToBinaryMatrice(item.out.toString()));
       console.log(
         'added',
         item.out.toString(),
-        digitToBinaryCode(item.out),
-        binaryCodeToDigit(digitToBinaryCode(item.out)),
+        digitToBinaryMatrice(item.out),
+        binaryMatriceToDigit(digitToBinaryMatrice(item.out)),
       );
     });
 
