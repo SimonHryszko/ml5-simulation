@@ -32,7 +32,7 @@
             v-for="value in orderBy(props.values ?? [1, 5, 10], Array, 'desc')"
             @click="updateModelValue(value * -1)"
             :key="value + 'negative' + props.titleName"
-            class="cursor-pointer aspect-square w-10 text-center bg-primary-red text-black p-2 rounded-sm">
+            class="cursor-pointer aspect-square w-10 text-center bg-primary-red p-2 rounded-sm">
             -{{ value }}
         </div>
 
@@ -47,7 +47,7 @@
             v-for="value in orderBy(props.values ?? [1, 5, 10], Array, 'asc')"
             @click="updateModelValue(value)"
             :key="value + 'positive' + props.titleName"
-            class="cursor-pointer aspect-square w-10 text-center bg-primary-red text-black p-2 rounded-sm">
+            class="cursor-pointer aspect-square w-10 text-center bg-primary-red p-2 rounded-sm">
             +{{ value }}
         </div>
     </section>
