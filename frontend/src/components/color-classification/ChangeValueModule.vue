@@ -1,5 +1,5 @@
 <script setup>
-    import { ref, computed } from 'vue';
+    import { ref } from 'vue';
     import { orderBy, _ } from 'lodash';
 
     const props = defineProps({

@@ -50,7 +50,6 @@ export const hslToHex = (h, s, l) => {
 
 export const digitToBinaryMatrice = (digit, bits) => {
   bits = bits || 10;
-  
   let arr = [];
 
   for (let i = 0; i < bits; i++) {
@@ -58,12 +57,14 @@ export const digitToBinaryMatrice = (digit, bits) => {
   }
 
   return arr;
-}
+};
 
 export const binaryMatriceToDigit = (arr) => {
   let index = arr.findIndex((item) => item == 1);
 
   return index == -1 ? 0 : index;
+};
+
 export const Toast = modal.mixin({
   showConfirmButton: true,
   toast: true,

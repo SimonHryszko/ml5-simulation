@@ -85,10 +85,14 @@
     </div>
 
     data {{ data }}
-    <ol class="col-start-1" v-for="r in _.orderBy(result, 'value', 'desc')" :key="r.label">
+    <ol class="col-start-2" v-for="r in _.orderBy(result, 'value', 'desc')" :key="r.label">
       {{
         r.label
-      }} - {{ r.value }}
+      }}
+      -
+      {{
+        r.value
+      }}
     </ol>
   </section>
 </template>
