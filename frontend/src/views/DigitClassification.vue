@@ -15,14 +15,16 @@
     epochs: 50,
     batchSize: 10,
   });
-  const modelOptions = {
+  const modelOptions = ref({
     task: 'classification',
     debug: true,
-  };
+    learningRate: 0.2,
+  });
+
   var model;
   const modelInit = () => {
     // 1. Create the model
-    model = ml5.neuralNetwork(modelOptions);
+    model = ml5.neuralNetwork(modelOptions.value);
 
     // 2. Add the data
     modelData.forEach((item) => {
@@ -82,7 +84,14 @@
 
     <div class="row-start-1 col-start-1 gap-y-4 flex flex-col">
       <ChangeValueModule :values="[10, 50, 75]" v-model="modelParams.epochs" titleName="Epochs" />
-      <ChangeValueModule :values="[1, 5, 10, 15]" v-model="modelParams.batchSize" titleName="Batch size" />
+      <ChangeValueModule
+        :values="[1, 5, 10]"
+        v-model="modelParams.batchSize"
+        titleName="Batch size" />
+      <ChangeValueModule
+        :values="[1, 2, 5]"
+        v-model="modelOptions.learningRate"
+        titleName="Learning rate" />
 
       <BaseButton @click="modelInit" :disabled="!ready">Teach model!</BaseButton>
     </div>
