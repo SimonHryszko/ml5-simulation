@@ -81,6 +81,7 @@
     <Board class="col-start-2" v-model="data" />
 
     <div class="row-start-1 col-start-1 gap-y-4 flex flex-col">
+      <ChangeValueModule :values="[10, 50, 75]" v-model="modelParams.epochs" titleName="Epochs" />
       <ChangeValueModule :values="[1, 5, 10, 15]" v-model="modelParams.batchSize" titleName="Batch size" />
 
       <BaseButton @click="modelInit" :disabled="!ready">Teach model!</BaseButton>
