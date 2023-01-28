@@ -1,4 +1,5 @@
 import data from '@/Models/color-classification/data.json';
+import * as modal from 'sweetalert2';
 
 export const getColor = (params = {}) => {
   let color = data.filter((item) => item.color.toLowerCase() == params.name.toLowerCase());
@@ -63,4 +64,15 @@ export const binaryMatriceToDigit = (arr) => {
   let index = arr.findIndex((item) => item == 1);
 
   return index == -1 ? 0 : index;
-}
+export const Toast = modal.mixin({
+  showConfirmButton: true,
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', toast.stopTimer);
+    toast.addEventListener('mouseleave', toast.resumeTimer);
+  },
+});
