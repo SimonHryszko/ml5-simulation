@@ -1,6 +1,7 @@
 <script setup>
-  import { ref, onMounted, watch } from 'vue';
+  import { ref, onMounted, watch, computed } from 'vue';
   import Board from '@/components/DigitClassfication/Board.vue';
+  import Char from '@/components/color-classification/Chart.vue';
   import ml5 from 'ml5';
   import _ from 'lodash';
   import { digitToBinaryMatrice, binaryMatriceToDigit, Toast } from '@/helper.js';
@@ -31,12 +32,6 @@
     // 2. Add the data
     modelData.forEach((item) => {
       model.addData(item.in.flat(), digitToBinaryMatrice(item.out.toString()));
-      console.log(
-        'added',
-        item.out.toString(),
-        digitToBinaryMatrice(item.out),
-        binaryMatriceToDigit(digitToBinaryMatrice(item.out)),
-      );
     });
 
     // 3. Normalize the data
@@ -99,8 +94,7 @@
 
 <template>
   <section class="grid grid-cols-3 m-10 gap-5">
-    <Board class="col-start-2" v-model="data" />
-
+    <!-- COL 1 -->
     <div class="row-start-1 col-start-1 gap-y-4 flex flex-col">
       <ChangeValueModule :values="[10, 50, 75]" v-model="modelParams.epochs" titleName="Epochs" />
       <ChangeValueModule
@@ -115,6 +109,10 @@
       <BaseButton @click="modelInit" :disabled="!ready">Teach model!</BaseButton>
     </div>
 
+    <!-- COL 2 -->
+    <Board class="col-start-2" v-model="data" />
+
+    <!-- COL 3 -->
     <Char class="col-start-3" :data="results" />
     <!-- r: {{ results }} -->
   </section>
