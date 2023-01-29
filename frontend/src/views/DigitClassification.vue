@@ -115,15 +115,7 @@
       <BaseButton @click="modelInit" :disabled="!ready">Teach model!</BaseButton>
     </div>
 
-    data {{ data }}
-    <ol class="col-start-2" v-for="r in _.orderBy(result, 'value', 'desc')" :key="r.label">
-      {{
-        r.label
-      }}
-      -
-      {{
-        r.value
-      }}
-    </ol>
+    <Char class="col-start-3" :data="results" />
+    <!-- r: {{ results }} -->
   </section>
 </template>
