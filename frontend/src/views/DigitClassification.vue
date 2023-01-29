@@ -23,6 +23,8 @@
 
   var model;
   const modelInit = () => {
+    ready.value = false;
+
     // 1. Create the model
     model = ml5.neuralNetwork(modelOptions.value);
 
