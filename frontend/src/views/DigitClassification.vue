@@ -78,6 +78,23 @@
       classify(data.value.flat());
     },
   );
+
+  const results = computed(() => {
+    if (!result.value) return [];
+
+    const arr = [];
+    const sorted = _.sortBy(result.value, 'value').reverse();
+
+    // for in result.value
+    for (let i = 0; i < result.value.length; i++) {
+      arr.push({
+        label: sorted[i].label,
+        value: sorted[i].value,
+      });
+    }
+    
+    return arr;
+  });
 </script>
 
 <template>
