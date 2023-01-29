@@ -62,7 +62,7 @@
         let backgroundColor = [];
 
         props.data.slice(0, 10).map((item) => {
-            let val = (item.confidence * 100).toFixed(0);
+            let val = ((item.confidence || item.value) * 100).toFixed(0);
             val = val < 1 ? 1 : val;
 
             labels.push(item.label);
@@ -71,12 +71,12 @@
                 getColor({
                     name: item.label,
                     transparency: 0.3,
-                }),
+                }) || 'rgba(255, 83, 83, 0.3)',
             );
             datasets[0].borderColor.push(
                 getColor({
                     name: item.label,
-                }),
+                }) || 'rgba(255, 83, 83, 1)'
             );
         });
 
