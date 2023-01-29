@@ -3,6 +3,7 @@ import * as modal from 'sweetalert2';
 
 export const getColor = (params = {}) => {
   let color = data.filter((item) => item.color.toLowerCase() == params.name.toLowerCase());
+  if(color.length == 0) return null;
 
   if (color.length > 0) {
     color = color[0];
