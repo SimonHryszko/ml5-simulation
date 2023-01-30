@@ -23,7 +23,7 @@ import { hexToRgb, randomHexColor, guideModal } from '@/helper.js';
   const modelReady = ref(false);
   const nnOptions = {
     task: 'classification',
-    debug: false,
+    debug: true,
   };
   let nn;
 

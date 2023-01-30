@@ -70,6 +70,12 @@ const path = computed(() => route.path);
                 class="hover:underline hover:decoration-primary-blue hover:underline-offset-8">
                 Text detection
             </span>
+            <span
+                :class="route.path=='/Digit-classification' ? 'underline underline-offset-8 decoration-primary-blue' : ''"
+                @click="$router.push('/Digit-classification')"
+                class="hover:underline hover:decoration-primary-blue hover:underline-offset-8">
+                Digit classification
+            </span>
         </div>
     </nav>
 </template>
