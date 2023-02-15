@@ -10,14 +10,20 @@ import { randomHexColor, guideModal } from '@/helper.js';
 const img_name = ref('/image-classification/2445.jpg');
   const results = ref([]);
 
+  const finishedClassifying = (err, r) => {
+    classify();
+    console.log(r);
+  };
+
   // Initialize the Image Classifier method with MobileNet
   const classifier = ml5.imageClassifier('MobileNet', () => {
-    classify();
+    finishedClassifying
   });
 
   const classify = () => {
     classifier.classify(document.getElementById('image'), (err, r) => {
       results.value = r;
+      console.log(r);
     });
   };
   watch(img_name, () => {

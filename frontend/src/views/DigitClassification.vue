@@ -22,6 +22,16 @@
     learningRate: 0.2,
   });
 
+const callTraining = () => {
+  ready.value = true;
+
+  Toast.fire({
+    title: 'Model is ready!',
+    icon: 'success',
+  });
+  console.info('Finished training');
+}
+
   var model;
   const modelInit = () => {
     ready.value = false;
@@ -38,14 +48,7 @@
     model.normalizeData();
 
     // 4. Train the model
-    model.train(modelParams.value, () => {
-      ready.value = true;
-
-      Toast.fire({
-        title: 'Model is ready!',
-        icon: 'success',
-      });
-    });
+    model.train(modelParams.value, callTraining);
   };
   const reset = (x, y) => {
     return Array.from({ length: x }, () => Array.from({ length: y }, () => 0));
@@ -64,6 +67,7 @@
         return;
       }
       result.value = res;
+      console.log(res);
     });
   };
 

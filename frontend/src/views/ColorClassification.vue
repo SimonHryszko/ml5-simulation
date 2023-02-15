@@ -30,7 +30,7 @@ import { hexToRgb, randomHexColor, guideModal } from '@/helper.js';
   // ---- Callbacks ----
   function finishedTraining() {
     modelReady.value = true;
-    console.log('finished training');
+    console.info('Finished training');
   }
 
   function gotResults(error, r) {
@@ -38,7 +38,12 @@ import { hexToRgb, randomHexColor, guideModal } from '@/helper.js';
       console.error(error);
       return;
     }
+    console.log(r);
     results.value = r;
+  }
+
+function whileLog(epoch, loss) {
+  console.log(`Epoch: ${epoch} Loss: ${JSON.stringify(loss)}`);
   }
 
   // ---- Methods ----
@@ -60,7 +65,7 @@ import { hexToRgb, randomHexColor, guideModal } from '@/helper.js';
     });
 
     nn.normalizeData();
-    nn.train(model.value, finishedTraining);
+    nn.train(model.value, whileLog, finishedTraining);
   };
 
   const predictColor = (hex) => {

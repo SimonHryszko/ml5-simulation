@@ -28,12 +28,13 @@ import GuideButton from '@/components/GuideButton.vue';
     };
   });
 
-  const classify = (t) => {
+const classify = (t) => {
     return sentiment.predict(t);
   };
 
   watch(text, () => {
     result.value = classify(text.value);
+    console.log(result.value);
   });
   const reviews = [
     {
@@ -73,16 +74,19 @@ import GuideButton from '@/components/GuideButton.vue';
     document.body.removeChild(el);
   };
 
+const modelReady = () => {
+  readiness.value = true;
+  for (let review of reviews) {
+    review.label = classify(review.quote).score;
+    review.bgCol = hslToHex(classify(review.quote).score * 10 * 13, 100, 50);
+    review.val = (review.label * 100).toFixed(0);
+  }
+    console.info('model is ready');
+  }
+
   onMounted(() => {
     // init model
-    sentiment = ml5.sentiment('movieReviews', () => {
-      readiness.value = true;
-      for (let review of reviews) {
-        review.label = classify(review.quote).score;
-        review.bgCol = hslToHex(classify(review.quote).score * 10 * 13, 100, 50);
-        review.val = (review.label * 100).toFixed(0);
-      }
-    });
+    sentiment = ml5.sentiment('movieReviews', modelReady);
   });
   const messages = [
     {
