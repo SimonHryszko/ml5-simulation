@@ -18,7 +18,7 @@
   });
   const modelOptions = ref({
     task: 'classification',
-    debug: true,
+    debug: !true,
     learningRate: 0.2,
   });
 
