@@ -25,12 +25,12 @@
 const callTraining = () => {
   ready.value = true;
 
-  Toast.fire({
-    title: 'Model is ready!',
-    icon: 'success',
-  });
-  console.info('Finished training');
-}
+    Toast.fire({
+      title: 'Model is ready!',
+      icon: 'success',
+    });
+    console.info('Finished training');
+  };
 
   var model;
   const modelInit = () => {
@@ -115,6 +115,8 @@ const callTraining = () => {
 
     <!-- COL 2 -->
     <Board class="col-start-2" v-model="data" />
+    <!-- if model not ready let user know -->
+    <p v-if="!ready" class="text-2xl">Model is not ready yet!</p>
 
     <!-- COL 3 -->
     <Char class="col-start-3" :data="results" />

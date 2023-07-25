@@ -1,5 +1,5 @@
 <script setup>
-  import { ref, watch } from 'vue';
+  import { onMounted, ref, watch } from 'vue';
   import CodeAndSchemaVue from '../components/CodeAndSchema.vue';
   import ml5 from 'ml5';
 import GuideButton from '@/components/GuideButton.vue';
@@ -9,15 +9,12 @@ import { randomHexColor, guideModal } from '@/helper.js';
   const color = ref(randomHexColor());
 const img_name = ref('/image-classification/2445.jpg');
   const results = ref([]);
-
-  const finishedClassifying = (err, r) => {
-    classify();
-    console.log(r);
-  };
+  const ready = ref(false);
 
   // Initialize the Image Classifier method with MobileNet
   const classifier = ml5.imageClassifier('MobileNet', () => {
-    finishedClassifying
+    Toast.fire({ title: 'Model is ready!', icon: 'success', });
+
   });
 
   const classify = () => {
@@ -69,9 +66,9 @@ const img_name = ref('/image-classification/2445.jpg');
         url("/images/nyan-cat.gif")
         left top
         no-repeat
-      `
-    }
-  ]
+  onMounted(() => {
+    Toast.fire({ title: 'Model is loading!', icon: 'info', });
+  });
 </script>
 <template>
   <section
@@ -81,7 +78,7 @@ const img_name = ref('/image-classification/2445.jpg');
       <CodeAndSchemaVue :code="results" :schema="model" />
 
       <div class="flex flex-col gap-4 bg-black rounded-md p-4 w-full h-full z-10">
-        <p v-if="results.length == 0">Looks like model is still loading, be patient.</p>
+        <p v-if="!ready">Looks like model is still loading, be patient.</p>
         <p v-for="item in results">
           -
           <a :href="`https://www.google.com/search?tbm=isch&q=${item.label}`" target="_blank">🔗</a>

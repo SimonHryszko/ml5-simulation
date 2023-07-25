@@ -8,7 +8,8 @@ import BaseButton from '@/components/BaseButton.vue';
 import { hexToRgb, randomHexColor, guideModal } from '@/helper.js';
   import data from '@/Models/color-classification/data.json';
   import InfoCard from '../components/infoCard.vue';
-  
+  import { Toast } from '@/helper.js';
+
   const model = ref({
     epochs: 72,
     batchSize: 5,
@@ -30,6 +31,11 @@ import { hexToRgb, randomHexColor, guideModal } from '@/helper.js';
   // ---- Callbacks ----
   function finishedTraining() {
     modelReady.value = true;
+
+    Toast.fire({
+      title: 'Model is ready!',
+      icon: 'success',
+    });
     console.info('Finished training');
   }
 
@@ -118,6 +124,10 @@ function whileLog(epoch, loss) {
   ];
 
   onMounted(() => {
+    Toast.fire({
+      title: 'Model is loading!',
+      icon: 'info',
+    });
     prepareModel();
   });
   watch(
