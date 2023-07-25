@@ -1,6 +1,6 @@
 <script setup>
     import Preview from './components/Preview.vue';
-    import TopNavigation from '@/components/TopNavigation.vue';
+    import TopNavigation from './components/TopNavigation.vue';
 
     const isPreview = import.meta.env.VITE_PREVIEW;
 </script>
