@@ -1,14 +1,15 @@
 <script setup>
   import GuideButton from '@/components/GuideButton.vue';
-import BaseButton from '@/components/BaseButton.vue';
+  import BaseButton from '@/components/BaseButton.vue';
   import Chart from '@/components/color-classification/Chart.vue';
   import ModelParameters from '../components/color-classification/ModelParameters.vue';
   import ml5 from 'ml5';
   import { ref, onMounted, watch } from 'vue';
-import { hexToRgb, randomHexColor, guideModal } from '@/helper.js';
+  import { hexToRgb, randomHexColor, guideModal } from '@/helper.js';
   import data from '@/Models/color-classification/data.json';
   import InfoCard from '../components/infoCard.vue';
-  
+  import { Toast } from '@/helper.js';
+
   const model = ref({
     epochs: 72,
     batchSize: 5,
@@ -23,17 +24,22 @@ import { hexToRgb, randomHexColor, guideModal } from '@/helper.js';
   const modelReady = ref(false);
   const nnOptions = {
     task: 'classification',
-    debug: true,
+    debug: !true,
   };
   let nn;
 
   // ---- Callbacks ----
-  function finishedTraining() {
+  function finishedTraining () {
     modelReady.value = true;
+
+    Toast.fire({
+      title: 'Model is ready!',
+      icon: 'success',
+    });
     console.info('Finished training');
   }
 
-  function gotResults(error, r) {
+  function gotResults (error, r) {
     if (error) {
       console.error(error);
       return;
@@ -42,8 +48,8 @@ import { hexToRgb, randomHexColor, guideModal } from '@/helper.js';
     results.value = r;
   }
 
-function whileLog(epoch, loss) {
-  console.log(`Epoch: ${epoch} Loss: ${JSON.stringify(loss)}`);
+  function whileLog (epoch, loss) {
+    console.log(`Epoch: ${epoch} Loss: ${JSON.stringify(loss)}`);
   }
 
   // ---- Methods ----
@@ -85,24 +91,24 @@ function whileLog(epoch, loss) {
 
   const messages = [
     {
-      title: "Color classificator",
-      text: "This model will show how artificial intelligence can be used. Colour classification is only from many examples like for example classification of animals, plants, etc."  
+      title: 'Color classificator',
+      text: 'This model will show how artificial intelligence can be used. Colour classification is only from many examples like for example classification of animals, plants, etc.',
     },
     {
-      title: "Teaching",
-      text: "The model is trained on a set of data. The data is a set of colors (RBG) and their names. The model is trained on this data and learns to classify colors."  
+      title: 'Teaching',
+      text: 'The model is trained on a set of data. The data is a set of colors (RBG) and their names. The model is trained on this data and learns to classify colors.',
     },
     {
-      title: "Parameters",
-      text: "The parameters are the number of epochs and the batch size. The number of epochs is the number of times the model will be trained on the data. The batch size is the number of samples that the model uses to calculate the error and update the model weights during training."
+      title: 'Parameters',
+      text: 'The parameters are the number of epochs and the batch size. The number of epochs is the number of times the model will be trained on the data. The batch size is the number of samples that the model uses to calculate the error and update the model weights during training.',
     },
     {
-      title: "Results",
-      text: "The results are the probability of the color being classified. The higher the probability, the more likely the color is classified."
+      title: 'Results',
+      text: 'The results are the probability of the color being classified. The higher the probability, the more likely the color is classified.',
     },
     {
-      title: "Try it",
-      text: "Try it yourself. Select a color with button 'change color' and the model will classify it. You can also train the model with different parameters. Change the number of epochs and/or the batch size, retrain the model and try it again."
+      title: 'Try it',
+      text: "Try it yourself. Select a color with button 'change color' and the model will classify it. You can also train the model with different parameters. Change the number of epochs and/or the batch size, retrain the model and try it again.",
     },
     {
       title: 'Enjoy!',
@@ -113,11 +119,15 @@ function whileLog(epoch, loss) {
         url("/images/nyan-cat.gif")
         left top
         no-repeat
-      `
-    }
+      `,
+    },
   ];
 
   onMounted(() => {
+    Toast.fire({
+      title: 'Model is loading!',
+      icon: 'info',
+    });
     prepareModel();
   });
   watch(
@@ -177,7 +187,7 @@ function whileLog(epoch, loss) {
           type="color"
           ref="colorPicker" />
       </div>
-      <GuideButton @click="guideModal(messages, 0)"/>
+      <GuideButton @click="guideModal(messages, 0)" />
     </section>
   </section>
 </template>
