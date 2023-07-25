@@ -22,8 +22,8 @@
     learningRate: 0.2,
   });
 
-const callTraining = () => {
-  ready.value = true;
+  const callTraining = () => {
+    ready.value = true;
 
     Toast.fire({
       title: 'Model is ready!',
@@ -91,7 +91,7 @@ const callTraining = () => {
         value: sorted[i].value,
       });
     }
-    
+
     return arr;
   });
 </script>
